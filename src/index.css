@@ -1,0 +1,43 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Agrega esto en tu archivo CSS global */
+@import "~slick-carousel/slick/slick.css";
+@import "~slick-carousel/slick/slick-theme.css";
+
+/* Para navegadores basados en WebKit (Chrome, Safari) */
+::-webkit-scrollbar {
+  width: 12px; /* Ancho de la barra de desplazamiento */
+  background-color: rgba(
+    240,
+    248,
+    255,
+    0.7
+  ); /* Color de fondo con un poco de transparencia */
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: rgba(
+    173,
+    216,
+    230,
+    0.9
+  ); /* Color del thumb en azul claro con un poco de transparencia */
+  border-radius: 10px; /* Bordes redondeados */
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: rgba(
+    135,
+    206,
+    250,
+    1
+  ); /* Color del thumb al pasar el mouse */
+}
+
+/* Para Firefox */
+.scrollable-element {
+  scrollbar-width: thin; /* Hacer la barra de desplazamiento más delgada */
+  scrollbar-color: rgba(173, 216, 230, 0.9) rgba(240, 248, 255, 0.7); /* Color del thumb y fondo */
+}
