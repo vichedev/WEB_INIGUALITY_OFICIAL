@@ -1,4 +1,3 @@
-// Importaciones
 import React from "react";
 import { AiOutlineMail } from "react-icons/ai";
 import { FaWhatsapp, FaInstagram, FaTiktok } from "react-icons/fa";
@@ -6,9 +5,28 @@ import { motion } from "framer-motion";
 
 const Contact = () => {
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen p-6 pt-32 bg-white">
-      {" "}
-      {/* Fondo blanco */}
+    <div className="relative flex flex-col items-center justify-center min-h-screen p-6 pt-32">
+      {/* Fondo con degradado */}
+      <div
+        className="absolute inset-0"
+        style={{
+          background:
+            "linear-gradient(135deg, rgba(255, 255, 255, 0.8), rgba(173, 216, 230, 0.8), rgba(240, 248, 255, 0.8))",
+          animation: "gradient 15s ease infinite",
+          backgroundSize: "400% 400%",
+          zIndex: -1, // Colocar el fondo detrás de los elementos
+        }}
+      />
+      <style>
+        {`
+          @keyframes gradient {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+          }
+        `}
+      </style>
+
       <motion.div
         className="flex justify-center mb-6"
         initial={{ opacity: 0, y: 20 }} // Estado inicial

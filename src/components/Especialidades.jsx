@@ -1,7 +1,13 @@
 import React from "react";
 import { motion } from "framer-motion";
-import { FaReact, FaVuejs } from "react-icons/fa";
-import { SiAstro } from "react-icons/si";
+import {
+  FaReact,
+  FaNodeJs,
+  FaSearch,
+  FaImage,
+  FaBolt,
+  FaUniversalAccess,
+} from "react-icons/fa";
 
 const Especialidades = () => {
   return (
@@ -33,36 +39,51 @@ const Especialidades = () => {
           <div className="flex flex-col items-center md:items-end space-y-6">
             {/* Carta 1 */}
             <motion.div
-              className="bg-gradient-to-r from-blue-200 to-blue-300 shadow-lg rounded-lg p-6 max-w-xs text-left text-gray-800 transition-transform duration-300 ease-in-out hover:scale-105 hover:shadow-xl"
+              className="bg-gray-100 shadow-sm rounded-xl p-6 max-w-xs text-left transition-transform duration-300 ease-in-out hover:scale-105 hover:shadow-2xl"
               whileHover={{ scale: 1.05 }}
             >
-              <h3 className="text-xl font-semibold mb-2">
-                Desarrollo Frontend
-              </h3>
-              <p>
+              <div className="flex items-center mb-4">
+                <FaReact className="text-blue-500 text-3xl mr-3" />
+                <h3 className="text-xl font-semibold text-gray-900">
+                  Desarrollo Frontend
+                </h3>
+              </div>
+              <p className="text-gray-600">
                 Utilizamos tecnologías como React y Vue.js para crear interfaces
-                atractivas y responsivas que mejoran la experiencia del usuario.
+                atractivas, responsivas y eficientes.
               </p>
             </motion.div>
+
             {/* Carta 2 */}
             <motion.div
-              className="bg-gradient-to-r from-green-200 to-green-300 shadow-lg rounded-lg p-6 max-w-xs text-left text-gray-800 transition-transform duration-300 ease-in-out hover:scale-105 hover:shadow-xl"
+              className="bg-gray-100 shadow-sm rounded-xl p-6 max-w-xs text-left transition-transform duration-300 ease-in-out hover:scale-105 hover:shadow-2xl"
               whileHover={{ scale: 1.05 }}
             >
-              <h3 className="text-xl font-semibold mb-2">Desarrollo Backend</h3>
-              <p>
-                Creamos soluciones robustas con Node.js y otros frameworks para
-                garantizar un rendimiento óptimo en el servidor.
+              <div className="flex items-center mb-4">
+                <FaNodeJs className="text-green-500 text-3xl mr-3" />
+                <h3 className="text-xl font-semibold text-gray-900">
+                  Desarrollo Backend
+                </h3>
+              </div>
+              <p className="text-gray-600">
+                Creamos soluciones robustas con Node.js, asegurando un
+                rendimiento óptimo y seguro en el servidor.
               </p>
             </motion.div>
+
             {/* Carta 3 */}
             <motion.div
-              className="bg-gradient-to-r from-purple-200 to-purple-300 shadow-lg rounded-lg p-6 max-w-xs text-left text-gray-800 transition-transform duration-300 ease-in-out hover:scale-105 hover:shadow-xl"
+              className="bg-gray-100 shadow-sm rounded-xl p-6 max-w-xs text-left transition-transform duration-300 ease-in-out hover:scale-105 hover:shadow-2xl"
               whileHover={{ scale: 1.05 }}
             >
-              <h3 className="text-xl font-semibold mb-2">Integraciones API</h3>
-              <p>
-                Especializados en integrar API de servicios externos,
+              <div className="flex items-center mb-4">
+                <FaBolt className="text-yellow-500 text-3xl mr-3" />
+                <h3 className="text-xl font-semibold text-gray-900">
+                  Integraciones API
+                </h3>
+              </div>
+              <p className="text-gray-600">
+                Especialistas en integrar API de servicios externos,
                 garantizando una integración rápida y eficiente.
               </p>
             </motion.div>
@@ -73,7 +94,7 @@ const Especialidades = () => {
             <motion.img
               src="/public/img/Especialidades/laptop.png"
               alt="Laptop 1"
-              className="w-full h-auto rounded-lg"
+              className="w-full h-auto rounded-lg shadow-md"
               initial={{ opacity: 0, scale: 0.8 }}
               whileInView={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.8 }}
@@ -81,7 +102,7 @@ const Especialidades = () => {
             <motion.img
               src="/public/img/Especialidades/laptop2.png"
               alt="Laptop 2"
-              className="w-full h-auto rounded-lg"
+              className="w-full h-auto rounded-lg shadow-md"
               initial={{ opacity: 0, scale: 0.8 }}
               whileInView={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.8 }}
@@ -89,7 +110,7 @@ const Especialidades = () => {
             <motion.img
               src="/public/img/Especialidades/laptop3.png"
               alt="Laptop 3"
-              className="w-full h-auto rounded-lg"
+              className="w-full h-auto rounded-lg shadow-md"
               initial={{ opacity: 0, scale: 0.8 }}
               whileInView={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.8 }}
@@ -100,37 +121,50 @@ const Especialidades = () => {
           <div className="flex flex-col items-center md:items-start space-y-6">
             {/* Carta 4 */}
             <motion.div
-              className="bg-gradient-to-r from-yellow-200 to-yellow-300 shadow-lg rounded-lg p-6 max-w-xs text-left text-gray-800 transition-transform duration-300 ease-in-out hover:scale-105 hover:shadow-xl"
+              className="bg-gray-100 shadow-sm rounded-xl p-6 max-w-xs text-left transition-transform duration-300 ease-in-out hover:scale-105 hover:shadow-2xl"
               whileHover={{ scale: 1.05 }}
             >
-              <h3 className="text-xl font-semibold mb-2">Optimización Web</h3>
-              <p>
+              <div className="flex items-center mb-4">
+                <FaSearch className="text-yellow-400 text-3xl mr-3" />
+                <h3 className="text-xl font-semibold text-gray-900">
+                  Optimización Web
+                </h3>
+              </div>
+              <p className="text-gray-600">
                 Mejoramos el rendimiento de las páginas web, asegurando tiempos
-                de carga rápidos y una experiencia fluida para los usuarios.
+                de carga rápidos y una experiencia fluida.
               </p>
             </motion.div>
+
             {/* Carta 5 */}
             <motion.div
-              className="bg-gradient-to-r from-orange-200 to-orange-300 shadow-lg rounded-lg p-6 max-w-xs text-left text-gray-800 transition-transform duration-300 ease-in-out hover:scale-105 hover:shadow-xl"
+              className="bg-gray-100 shadow-sm rounded-xl p-6 max-w-xs text-left transition-transform duration-300 ease-in-out hover:scale-105 hover:shadow-2xl"
               whileHover={{ scale: 1.05 }}
             >
-              <h3 className="text-xl font-semibold mb-2">
-                Optimización de Imágenes
-              </h3>
-              <p>
+              <div className="flex items-center mb-4">
+                <FaImage className="text-orange-500 text-3xl mr-3" />
+                <h3 className="text-xl font-semibold text-gray-900">
+                  Optimización de Imágenes
+                </h3>
+              </div>
+              <p className="text-gray-600">
                 Reducimos el tamaño de las imágenes sin comprometer la calidad,
                 mejorando la velocidad de carga.
               </p>
             </motion.div>
+
             {/* Carta 6 */}
             <motion.div
-              className="bg-gradient-to-r from-red-200 to-red-300 shadow-lg rounded-lg p-6 max-w-xs text-left text-gray-800 transition-transform duration-300 ease-in-out hover:scale-105 hover:shadow-xl"
+              className="bg-gray-100 shadow-sm rounded-xl p-6 max-w-xs text-left transition-transform duration-300 ease-in-out hover:scale-105 hover:shadow-2xl"
               whileHover={{ scale: 1.05 }}
             >
-              <h3 className="text-xl font-semibold mb-2">
-                SEO y Accesibilidad
-              </h3>
-              <p>
+              <div className="flex items-center mb-4">
+                <FaUniversalAccess className="text-red-500 text-3xl mr-3" />
+                <h3 className="text-xl font-semibold text-gray-900">
+                  SEO y Accesibilidad
+                </h3>
+              </div>
+              <p className="text-gray-600">
                 Optimizamos tu sitio web para motores de búsqueda y garantizamos
                 que sea accesible para todos los usuarios.
               </p>

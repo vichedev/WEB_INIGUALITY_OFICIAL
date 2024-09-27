@@ -70,9 +70,28 @@ const colorMap = {
 
 const Nosotros = () => {
   return (
-    <div className="py-40 px-4 md:px-16 bg-gray-50">
-      {" "}
-      {/* Fondo claro */}
+    <div className="relative py-40 px-4 md:px-16">
+      {/* Fondo con degradado */}
+      <div
+        className="absolute inset-0"
+        style={{
+          background:
+            "linear-gradient(135deg, rgba(255, 255, 255, 0.8), rgba(173, 216, 230, 0.8), rgba(240, 248, 255, 0.8))",
+          animation: "gradient 15s ease infinite",
+          backgroundSize: "400% 400%",
+          zIndex: -1, // Colocar el fondo detrás de los elementos
+        }}
+      />
+      <style>
+        {`
+          @keyframes gradient {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+          }
+        `}
+      </style>
+
       {/* Espacio para el Header */}
       {/* Imagen de título con animación */}
       <motion.div
@@ -165,4 +184,4 @@ const Nosotros = () => {
   );
 };
 
-export default Nosotros;
+export default Nosotros; // Exportar el componente

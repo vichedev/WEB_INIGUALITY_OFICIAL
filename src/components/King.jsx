@@ -10,12 +10,12 @@ import {
 } from "react-icons/fa";
 
 // Imágenes para las cartas
-import imgQuality from "/public/img/Hero/hero.png"; // Reemplaza con la ruta real de la imagen
-import imgInnovation from "/public/img/Hero/hero.png"; // Reemplaza con la ruta real de la imagen
-import imgSecurity from "/public/img/Hero/hero.png"; // Reemplaza con la ruta real de la imagen
-import imgTeam from "/public/img/Hero/hero.png"; // Reemplaza con la ruta real de la imagen
-import imgSolutions from "/public/img/Hero/hero.png"; // Reemplaza con la ruta real de la imagen
-import imgCustomization from "/public/img/Hero/hero.png"; // Reemplaza con la ruta real de la imagen
+import imgQuality from "/public/img/Hero/hero.webp"; // Reemplaza con la ruta real de la imagen
+import imgInnovation from "/public/img/Hero/hero.webp"; // Reemplaza con la ruta real de la imagen
+import imgSecurity from "/public/img/Hero/hero.webp"; // Reemplaza con la ruta real de la imagen
+import imgTeam from "/public/img/Hero/hero.webp"; // Reemplaza con la ruta real de la imagen
+import imgSolutions from "/public/img/Hero/hero.webp"; // Reemplaza con la ruta real de la imagen
+import imgCustomization from "/public/img/Hero/hero.webp"; // Reemplaza con la ruta real de la imagen
 
 const King = () => {
   const slides = [
@@ -87,7 +87,10 @@ const King = () => {
             <motion.div
               key={index}
               className="relative rounded-lg overflow-hidden shadow-lg bg-white transition-transform duration-300 hover:shadow-xl"
-              initial={{ opacity: 0, x: -50 }} // Desplazamiento inicial desde la izquierda
+              initial={{
+                opacity: 0,
+                x: index % 2 === 0 ? -50 : 50, // Si el índice es par, desplaza desde la izquierda, si es impar desde la derecha
+              }}
               whileInView={{ opacity: 1, x: 0 }} // Vuelve al centro al entrar en vista
               transition={{
                 duration: 0.6,

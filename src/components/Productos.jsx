@@ -8,7 +8,7 @@ const categories = [
     name: "Sistema de Facturación",
     products: [
       {
-        name: "FacturaPro",
+        name: "FactuCash",
         images: [
           "/img/Productos/Facturacion/1.png",
           "/img/Productos/Facturacion/2.png",
@@ -27,7 +27,7 @@ const categories = [
     name: "Sistema de ISP",
     products: [
       {
-        name: "ISP Manager",
+        name: "ISPMAX",
         images: [
           "/img/Productos/Isp/1.png",
           "/img/productos/isp2.jpg",
@@ -47,7 +47,7 @@ const categories = [
     name: "Sistema de Bot",
     products: [
       {
-        name: "Bot Chat",
+        name: "WBOT",
         images: [
           "/img/Productos/wbot/1.png",
           "/img/Productos/wbot/2.png",
@@ -66,7 +66,7 @@ const categories = [
     name: "Sistema de Tickets",
     products: [
       {
-        name: "TicketSystem",
+        name: "FAST TICKET SYSTEM",
         images: [
           "/img/Productos/ticket/1.png",
           "/img/Productos/ticket/2.png",
@@ -85,7 +85,7 @@ const categories = [
     name: "Servicios Web Personalizados",
     products: [
       {
-        name: "Web Custom",
+        name: "WEB Personalizadas",
         images: [
           "/img/Productos/Webs/1.png",
           "/img/Productos/Webs/2.png",
@@ -142,7 +142,26 @@ const Productos = () => {
     .flatMap((category) => category.products);
 
   return (
-    <div className="py-40 px-4 md:px-16">
+    <div className="relative py-40 px-4 md:px-16">
+      <div
+        className="absolute inset-0"
+        style={{
+          background:
+            "linear-gradient(135deg, rgba(255, 255, 255, 0.8), rgba(173, 216, 230, 0.8), rgba(240, 248, 255, 0.8))",
+          animation: "gradient 15s ease infinite",
+          backgroundSize: "400% 400%",
+          zIndex: -1, // Colocar el fondo detrás de los elementos
+        }}
+      />
+      <style>
+        {`
+          @keyframes gradient {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+          }
+        `}
+      </style>
       <motion.div
         className="flex justify-center mb-6"
         initial={{ opacity: 0, y: 20 }}
@@ -166,7 +185,6 @@ const Productos = () => {
         Descubre nuestras soluciones digitales, diseñadas para mejorar tu
         negocio con herramientas innovadoras y eficientes.
       </motion.p>
-
       {/* Barra de filtrado */}
       <div className="grid grid-cols-2 md:grid-cols-6 gap-4 mb-8">
         {[
@@ -190,7 +208,6 @@ const Productos = () => {
           </button>
         ))}
       </div>
-
       {/* Productos */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
         {filteredProducts.map((product, idx) => (
@@ -211,7 +228,6 @@ const Productos = () => {
           </motion.div>
         ))}
       </div>
-
       {/* Modal para producto seleccionado */}
       {isModalOpen && (
         <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-70 z-50 p-4">
@@ -258,7 +274,6 @@ const Productos = () => {
           </div>
         </div>
       )}
-
       {/* Vista previa de imagen en modo escritorio */}
       {selectedImage && window.innerWidth > 768 && (
         <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-70 z-50 p-4">
