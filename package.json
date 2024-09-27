@@ -20,7 +20,9 @@
     "react-slick": "^0.30.2",
     "react-tsparticles": "^2.12.2",
     "slick-carousel": "^1.8.1",
-    "swiper": "^11.1.14"
+    "swiper": "^11.1.14",
+    "tsparticles": "^3.5.0",
+    "uvcanvas": "^0.2.1"
   },
   "devDependencies": {
     "@eslint/js": "^9.9.0",
