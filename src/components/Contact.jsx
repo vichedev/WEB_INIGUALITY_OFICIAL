@@ -2,10 +2,25 @@ import React from "react";
 import { AiOutlineMail } from "react-icons/ai";
 import { FaWhatsapp, FaInstagram, FaTiktok } from "react-icons/fa";
 import { motion } from "framer-motion";
+import { Helmet } from "react-helmet"; // Importamos Helmet
 
 const Contact = () => {
   return (
     <div className="relative flex flex-col items-center justify-center min-h-screen p-6 pt-32">
+      {/* SEO Dinámico con Helmet */}
+      <Helmet>
+        <title>Contacta con Nosotros - InigualitySoft</title>
+        <meta
+          name="description"
+          content="Contáctanos a través de nuestras redes sociales o envíanos un correo. ¡Estamos aquí para ayudarte!"
+        />
+        <meta
+          name="keywords"
+          content="contacto, email, whatsapp, instagram, tiktok, InigualitySoft"
+        />
+        <link rel="canonical" href="https://www.inigualitysoft.com/contacto" />
+      </Helmet>
+
       {/* Fondo con degradado */}
       <div
         className="absolute inset-0"
@@ -36,10 +51,11 @@ const Contact = () => {
       >
         <motion.img
           src="/public/img/textos/zonadecontactos.webp"
-          alt="Galería de Proyectos"
+          alt="Zona de Contactos"
           className="w-full h-auto max-w-[600px]"
         />
       </motion.div>
+
       {/* Subtítulo */}
       <motion.p
         className="text-center text-lg text-gray-600 mb-8"
@@ -48,14 +64,15 @@ const Contact = () => {
         exit={{ opacity: 0, y: 20 }} // Estado al salir de vista
         transition={{ duration: 0.5 }} // Duración de la animación
       >
-        Contactate directamente con nosotros en nuestas redes sociales!
+        ¡Contáctanos directamente a través de nuestras redes sociales!
       </motion.p>
+
       {/* Contenedor de tarjetas */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 w-full max-w-4xl">
         {/* Tarjeta de correo */}
         <div className="bg-white shadow-lg rounded-lg overflow-hidden transform transition-transform duration-300 hover:scale-105">
-          <div className="flex items-center justify-center h-40 bg-blue-200">
-            <AiOutlineMail className="text-5xl text-blue-600" />
+          <div className="flex items-center justify-center h-40 bg-blue-300">
+            <AiOutlineMail className="text-5xl text-blue-800" />
           </div>
           <div className="p-4 text-center">
             <h2 className="text-xl font-bold text-gray-800">
@@ -65,10 +82,11 @@ const Contact = () => {
               Contáctanos por email para más información.
             </p>
             <a
-              href="mailto:tuemail@example.com"
-              className="inline-block mt-4 px-6 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition-colors"
+              href="mailto:info@inigualitysoft.com"
+              className="inline-block mt-4 px-6 py-2 bg-blue-800 text-white rounded-lg hover:bg-blue-900 transition-colors"
               target="_blank" // Abrir en nueva ventana
               rel="noopener noreferrer" // Seguridad adicional
+              aria-label="Enviar un correo a info@inigualitysoft.com"
             >
               ¡Escríbenos!
             </a>
@@ -77,8 +95,8 @@ const Contact = () => {
 
         {/* Tarjeta de WhatsApp */}
         <div className="bg-white shadow-lg rounded-lg overflow-hidden transform transition-transform duration-300 hover:scale-105">
-          <div className="flex items-center justify-center h-40 bg-green-200">
-            <FaWhatsapp className="text-5xl text-green-600" />
+          <div className="flex items-center justify-center h-40 bg-green-300">
+            <FaWhatsapp className="text-5xl text-green-800" />
           </div>
           <div className="p-4 text-center">
             <h2 className="text-xl font-bold text-gray-800">WhatsApp</h2>
@@ -86,10 +104,11 @@ const Contact = () => {
               Chatea con nosotros en tiempo real.
             </p>
             <a
-              href="https://wa.me/123456789" // Cambia el número por el correcto
-              className="inline-block mt-4 px-6 py-2 bg-green-500 text-white rounded-lg hover:bg-green-600 transition-colors"
+              href="https://wa.link/3nnc8b" // Cambia el número por el correcto
+              className="inline-block mt-4 px-6 py-2 bg-green-800 text-white rounded-lg hover:bg-green-900 transition-colors"
               target="_blank"
               rel="noopener noreferrer"
+              aria-label="Iniciar chat en WhatsApp"
             >
               ¡Iniciar Chat!
             </a>
@@ -98,8 +117,8 @@ const Contact = () => {
 
         {/* Tarjeta de Instagram */}
         <div className="bg-white shadow-lg rounded-lg overflow-hidden transform transition-transform duration-300 hover:scale-105">
-          <div className="flex items-center justify-center h-40 bg-pink-200">
-            <FaInstagram className="text-5xl text-pink-600" />
+          <div className="flex items-center justify-center h-40 bg-pink-300">
+            <FaInstagram className="text-5xl text-pink-800" />
           </div>
           <div className="p-4 text-center">
             <h2 className="text-xl font-bold text-gray-800">Instagram</h2>
@@ -107,10 +126,11 @@ const Contact = () => {
               Síguenos para ver nuestras novedades.
             </p>
             <a
-              href="https://www.instagram.com/tu_perfil" // Cambia el perfil por el correcto
-              className="inline-block mt-4 px-6 py-2 bg-pink-500 text-white rounded-lg hover:bg-pink-600 transition-colors"
+              href="https://www.instagram.com/rednuevaconexion.ec/?hl=es" // Cambia el perfil por el correcto
+              className="inline-block mt-4 px-6 py-2 bg-pink-800 text-white rounded-lg hover:bg-pink-900 transition-colors"
               target="_blank"
               rel="noopener noreferrer"
+              aria-label="Seguir en Instagram"
             >
               ¡Síguenos!
             </a>
@@ -128,10 +148,11 @@ const Contact = () => {
               Diviértete con nuestro contenido.
             </p>
             <a
-              href="https://www.tiktok.com/@tu_usuario" // Cambia el usuario por el correcto
-              className="inline-block mt-4 px-6 py-2 bg-black text-white rounded-lg hover:bg-gray-800 transition-colors"
+              href="https://www.tiktok.com/@iniguality?is_from_webapp=1&sender_device=pc" // Cambia el usuario por el correcto
+              className="inline-block mt-4 px-6 py-2 bg-gray-800 text-white rounded-lg hover:bg-gray-900 transition-colors"
               target="_blank"
               rel="noopener noreferrer"
+              aria-label="Descubrir contenido en TikTok"
             >
               ¡Descúbrenos!
             </a>

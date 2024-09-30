@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { motion } from "framer-motion";
+import { Helmet } from "react-helmet"; // Importar Helmet para SEO
 
 // Imágenes para los proyectos
 import imgProject1 from "/public/img/Productos/Facturacion/1.webp"; // Reemplaza con la ruta real
@@ -56,6 +57,7 @@ const Gallery = () => {
           <motion.img
             src="/public/img/textos/galeriadeproyectos.webp"
             alt="Galería de Proyectos"
+            loading="lazy" // Lazy loading
             className="w-full h-auto max-w-[600px]"
           />
         </motion.div>
@@ -89,6 +91,7 @@ const Gallery = () => {
               <img
                 src={project.image}
                 alt={project.title}
+                loading="lazy" // Lazy loading
                 className="w-full h-auto rounded-lg transition-transform duration-300 transform hover:scale-110"
               />
             </motion.div>
@@ -108,6 +111,7 @@ const Gallery = () => {
           <motion.img
             src={selectedImage}
             alt="Imagen del proyecto"
+            loading="lazy" // Lazy loading
             className="max-w-full max-h-full p-4 rounded-lg"
             initial={{ scale: 0.9 }}
             animate={{ scale: 1 }}

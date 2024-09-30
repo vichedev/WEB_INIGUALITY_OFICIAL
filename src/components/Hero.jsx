@@ -1,62 +1,75 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { FaReact, FaVuejs, FaNodeJs, FaHtml5, FaCss3Alt } from "react-icons/fa";
-import { SiAstro } from "react-icons/si"; // Importar el ícono de Astro
-import { motion } from "framer-motion"; // Importar framer-motion
+import { SiAstro } from "react-icons/si";
+import { motion } from "framer-motion";
+import { Helmet } from "react-helmet";
 
 // Componente Hero
 const Hero = () => {
-  const imgRef = useRef(null); // Referencia para la imagen del héroe
-  const smallImgRef = useRef(null); // Referencia para la imagen de fondo
-  const waveRef = useRef(null); // Nueva referencia para la ola
+  const imgRef = useRef(null);
+  const smallImgRef = useRef(null);
+  const waveRef = useRef(null);
 
-  // Almacenar posiciones de los íconos
-  const icons = useRef(
-    Array.from({ length: 10 }, (_, index) => ({
+  const [iconsState, setIcons] = useState(() => createInitialIcons(10));
+
+  function createInitialIcons(count) {
+    return Array.from({ length: count }, (_, index) => ({
       component: (
         <>
           {index % 6 === 0 && <FaReact color="#61DBFB" size={60} />}
-          {index % 6 === 1 && <SiAstro color="#FF5C00" size={60} />}{" "}
-          {/* Ícono de Astro */}
+          {index % 6 === 1 && <SiAstro color="#FF5C00" size={60} />}
           {index % 6 === 2 && <FaVuejs color="#41B883" size={60} />}
-          {index % 6 === 3 && <FaNodeJs color="#8CC84B" size={60} />}{" "}
-          {/* Ícono de Node.js */}
+          {index % 6 === 3 && <FaNodeJs color="#8CC84B" size={60} />}
           {index % 6 === 4 && <FaHtml5 color="#E44D26" size={60} />}
           {index % 6 === 5 && <FaCss3Alt color="#1572B6" size={60} />}
         </>
       ),
       x: Math.random() * window.innerWidth,
       y: Math.random() * window.innerHeight,
-      rotation: Math.random() * 360, // Rotación inicial
-    }))
-  );
+      rotation: Math.random() * 360,
+    }));
+  }
+
+  useEffect(() => {
+    // Aquí se añade el preload para la imagen LCP
+    const link = document.createElement("link");
+    link.rel = "preload";
+    link.as = "image";
+    link.href = "/public/img/Hero/fondo.webp";
+    document.head.appendChild(link);
+
+    return () => {
+      document.head.removeChild(link);
+    };
+  }, []);
 
   const handleScroll = () => {
-    if (imgRef.current) {
-      const scrollY = window.scrollY;
-      const windowHeight = window.innerHeight;
-      const imgOffsetTop = imgRef.current.offsetTop;
+    requestAnimationFrame(() => {
+      if (imgRef.current) {
+        const scrollY = window.scrollY;
+        const windowHeight = window.innerHeight;
+        const imgOffsetTop = imgRef.current.offsetTop;
 
-      const opacity = Math.max(
-        0,
-        Math.min(1, (windowHeight - scrollY + imgOffsetTop) / windowHeight)
-      );
-      imgRef.current.style.opacity = opacity;
+        const opacity = Math.max(
+          0,
+          Math.min(1, (windowHeight - scrollY + imgOffsetTop) / windowHeight)
+        );
+        imgRef.current.style.opacity = opacity;
 
-      const scale = Math.max(0.8, 1 - scrollY / 1000);
-      imgRef.current.style.transform = `scale(${scale})`;
+        const scale = Math.max(0.8, 1 - scrollY / 1000);
+        imgRef.current.style.transform = `scale(${scale})`;
 
-      // Animar la imagen de fondo
-      if (smallImgRef.current) {
-        const translateY = scrollY * 0.05; // Efecto de desplazamiento ligero
-        smallImgRef.current.style.transform = `translateY(${translateY}px) scale(0.8)`; // Ajusta el tamaño
+        if (smallImgRef.current) {
+          const translateY = scrollY * 0.05;
+          smallImgRef.current.style.transform = `translateY(${translateY}px) scale(0.8)`;
+        }
+
+        if (waveRef.current) {
+          const waveTranslateY = Math.sin(scrollY * 0.005) * 10;
+          waveRef.current.style.transform = `translateY(${waveTranslateY}px)`;
+        }
       }
-
-      // Animar la ola con movimiento sutil
-      if (waveRef.current) {
-        const waveTranslateY = Math.sin(scrollY * 0.005) * 10; // Aumentar el movimiento suave
-        waveRef.current.style.transform = `translateY(${waveTranslateY}px)`; // Ajusta la ola
-      }
-    }
+    });
   };
 
   useEffect(() => {
@@ -68,22 +81,18 @@ const Hero = () => {
 
   useEffect(() => {
     const interval = setInterval(() => {
-      icons.current = icons.current.map((icon) => ({
-        ...icon,
-        x: Math.random() * window.innerWidth,
-        y: Math.random() * window.innerHeight,
-        rotation: Math.random() * 360, // Nueva rotación aleatoria
-      }));
-      // Forzar un re-render para actualizar las posiciones
-      setIcons([...icons.current]);
-    }, 3000); // Cambiar cada 3 segundos
-
+      setIcons((prevIcons) =>
+        prevIcons.map((icon) => ({
+          ...icon,
+          x: Math.random() * window.innerWidth,
+          y: Math.random() * window.innerHeight,
+          rotation: Math.random() * 360,
+        }))
+      );
+    }, 3000);
     return () => clearInterval(interval);
   }, []);
 
-  const [iconsState, setIcons] = React.useState(icons.current);
-
-  // Variantes de animación para Framer Motion
   const fadeInUp = {
     hidden: { opacity: 0, y: 20 },
     visible: { opacity: 1, y: 0 },
@@ -91,12 +100,21 @@ const Hero = () => {
 
   return (
     <section className="relative h-[90vh] flex items-center justify-center overflow-hidden mt-[10vh] bg-white">
-      {/* Imagen de fondo */}
+      <Helmet>
+        <title>InigualitySoft - Innovación en Software</title>
+        <meta
+          name="description"
+          content="InigualitySoft ofrece soluciones innovadoras en software para empresas de todo el mundo."
+        />
+      </Helmet>
+
+      {/* Imagen de fondo optimizada */}
       <div className="absolute inset-0">
         <img
-          src="/public/img/Hero/fondo.webp" // Cambia esto por la ruta de tu imagen de fondo
-          alt="Fondo"
-          className="w-full h-full object-cover" // Asegúrate de cubrir todo el fondo
+          src="/public/img/Hero/fondo.webp"
+          alt="Fondo creativo de InigualitySoft"
+          className="w-full h-full object-cover"
+          loading="eager" // Carga inmediata
         />
       </div>
 
@@ -108,8 +126,8 @@ const Hero = () => {
             className="absolute transition-all duration-1000"
             style={{
               transform: `translate(${icon.x}px, ${icon.y}px) rotate(${icon.rotation}deg)`,
-              opacity: 0.8, // Ajustar la opacidad para una apariencia más suave
-              zIndex: -1, // Asegurar que los iconos estén detrás del contenido
+              opacity: 0.8,
+              zIndex: -1,
             }}
           >
             {icon.component}
@@ -117,19 +135,19 @@ const Hero = () => {
         ))}
       </div>
 
-      {/* Imagen de fondo desplazada a la derecha, visible solo en desktop */}
+      {/* Imagen de fondo desplazada a la derecha */}
       <div className="absolute inset-0 hidden md:block">
         <img
-          src="/public/img/Hero/iniguality.webp" // Cambia esto por la ruta de tu imagen
-          alt="Fondo"
-          className="w-full h-full object-cover transform translate-x-1/4" // Desplazamiento a la derecha
+          src="/public/img/Hero/iniguality.webp"
+          alt="Equipo de InigualitySoft trabajando"
+          className="w-full h-full object-cover transform translate-x-1/4"
+          loading="lazy" // Lazy loading para la imagen no crítica
         />
       </div>
 
       {/* Contenido principal */}
       <div className="container mx-auto flex flex-col xl:flex-row items-center justify-between gap-10 px-6 relative z-10">
         <div className="text-left flex-1">
-          {/* Título principal con animación */}
           <motion.h1
             className="text-4xl xl:text-6xl font-bold text-primary mb-4 drop-shadow-lg"
             initial="hidden"
@@ -137,50 +155,50 @@ const Hero = () => {
             variants={fadeInUp}
             transition={{ duration: 0.8 }}
           >
-            <span className="block">¡BIENVENIDOS A</span> {/* Primera línea */}
-            <span className="block">INIGUALITYSOFT!</span> {/* Segunda línea */}
+            <span className="block">¡BIENVENIDOS A</span>
+            <span className="block">INIGUALITYSOFT!</span>
           </motion.h1>
 
-          {/* Texto secundario con animación */}
           <motion.p
             className="text-lg xl:text-xl text-gray-700 mb-6 drop-shadow-lg"
             initial="hidden"
             animate="visible"
             variants={fadeInUp}
-            transition={{ duration: 0.8, delay: 0.2 }} // Retardo para la animación
+            transition={{ duration: 0.8, delay: 0.2 }}
           >
             Innovación y calidad en cada uno de nuestros productos.
           </motion.p>
 
-          {/* Botón con animación */}
           <motion.button
-            className="bg-cyan-500 text-white px-8 py-4 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105"
+            aria-label="Descubre más sobre InigualitySoft"
+            className="bg-cyan-700 text-white px-8 py-4 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105"
             initial="hidden"
             animate="visible"
             variants={fadeInUp}
-            transition={{ duration: 0.8, delay: 0.4 }} // Retardo para la animación
+            transition={{ duration: 0.8, delay: 0.4 }}
           >
-            Descubre Más
+            ¡Descubre más!
           </motion.button>
         </div>
 
         {/* Imagen del héroe que solo se muestra en móvil */}
         <div className="flex-1 md:hidden">
           <img
-            src="/public/img/Hero/hero.webp" // Cambia esto por la ruta de tu imagen
-            alt="Imagen del Hero"
+            src="/public/img/Hero/hero.webp"
+            alt="Equipo de desarrollo en InigualitySoft"
             ref={imgRef}
-            className="w-full h-auto max-w-[500px] transition-opacity duration-300" // Hacer la imagen más visible
+            className="w-full h-auto max-w-[500px] transition-opacity duration-300"
+            loading="lazy" // Lazy loading
           />
         </div>
       </div>
 
-      {/* Ola de fondo */}
+      {/* Ola de fondo con gradiente mejorado */}
       <svg
         ref={waveRef}
         className="absolute bottom-0 w-full"
-        viewBox="0 0 1440 210" // Cambia esto para ajustarlo
-        preserveAspectRatio="xMidYMax slice" // Asegúrate de usar esta propiedad
+        viewBox="0 0 1440 210"
+        preserveAspectRatio="xMidYMax slice"
       >
         <defs>
           <linearGradient id="waveGradient" x1="0%" x2="100%" y1="0%" y2="100%">

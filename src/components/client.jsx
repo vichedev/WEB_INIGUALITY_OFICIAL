@@ -1,5 +1,6 @@
 import React from "react";
 import { motion } from "framer-motion";
+import { Helmet } from "react-helmet"; // Importar Helmet para SEO
 
 // Imágenes de los logos de los clientes
 import logo1 from "/public/img/clientes/red.webp";
@@ -31,7 +32,8 @@ const Client = () => {
           <div className="flex justify-center">
             <motion.img
               src="/public/img/textos/nuestrosclientes.webp"
-              alt="Especialidades"
+              alt="Nuestros Clientes"
+              loading="lazy" // Lazy loading
               className="w-full h-auto max-w-[600px] mb-6"
             />
           </div>
@@ -56,11 +58,10 @@ const Client = () => {
             {/* Clonando la lista para un efecto infinito */}
             {clients.concat(clients).map((client) => (
               <div key={client.id} className="flex-shrink-0 w-1/5">
-                {" "}
-                {/* Ajuste de tamaño */}
                 <img
                   src={client.logo}
                   alt={`Logo de Cliente ${client.id}`}
+                  loading="lazy" // Lazy loading
                   className="w-auto h-27 mx-auto" // Aumentar la altura a 24
                 />
               </div>

@@ -71,6 +71,7 @@ const King = () => {
           <motion.img
             src="/public/img/textos/porqueelegirnos.webp"
             alt="Especialidades"
+            loading="lazy" // Lazy loading
             className="w-full h-auto max-w-[500px] mb-6"
           />
         </div>
@@ -104,6 +105,7 @@ const King = () => {
                 <img
                   src={slide.image}
                   alt={slide.title}
+                  loading="lazy" // Lazy loading
                   className="object-cover w-full h-full transition-transform duration-500 hover:scale-105"
                 />
               </div>

@@ -48,16 +48,18 @@ const Footer = () => {
             <h2 className="text-3xl font-bold mb-2">Redes Sociales</h2>
             <div className="flex justify-center space-x-4">
               <a
-                href="https://instagram.com"
+                href="https://www.instagram.com/rednuevaconexion.ec/?hl=es"
                 target="_blank"
                 rel="noopener noreferrer"
+                aria-label="Visítanos en Instagram"
               >
                 <FaInstagram className="text-gray-400 hover:text-blue-300 transition-colors duration-300 text-3xl" />
               </a>
               <a
-                href="https://tiktok.com"
+                href="https://www.tiktok.com/@iniguality?is_from_webapp=1&sender_device=pc"
                 target="_blank"
                 rel="noopener noreferrer"
+                aria-label="Visítanos en TikTok"
               >
                 <FaTiktok className="text-gray-400 hover:text-blue-300 transition-colors duration-300 text-3xl" />
               </a>

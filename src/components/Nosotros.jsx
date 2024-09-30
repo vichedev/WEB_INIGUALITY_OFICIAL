@@ -1,6 +1,7 @@
 import React from "react";
 import { motion } from "framer-motion"; // Importar Framer Motion
 import { FaGithub, FaInstagram } from "react-icons/fa"; // Importar íconos
+import { Helmet } from "react-helmet"; // Importar Helmet para SEO
 
 const developers = [
   {
@@ -71,6 +72,14 @@ const colorMap = {
 const Nosotros = () => {
   return (
     <div className="relative py-40 px-4 md:px-16">
+      <Helmet>
+        <title>Conoce Nuestro Equipo - InigualitySoft</title>
+        <meta
+          name="description"
+          content="Conoce a nuestro equipo de desarrolladores apasionados y creativos en InigualitySoft. Descubre su experiencia y compromiso con la innovación."
+        />
+      </Helmet>
+
       {/* Fondo con degradado */}
       <div
         className="absolute inset-0"
@@ -92,7 +101,6 @@ const Nosotros = () => {
         `}
       </style>
 
-      {/* Espacio para el Header */}
       {/* Imagen de título con animación */}
       <motion.div
         className="flex justify-center mb-6"
@@ -103,10 +111,12 @@ const Nosotros = () => {
       >
         <motion.img
           src="/public/img/textos/nuestroequipo.webp"
-          alt="Galería de Proyectos"
+          alt="Nuestro Equipo de Desarrolladores"
+          loading="lazy" // Lazy loading
           className="w-full h-auto max-w-[600px]"
         />
       </motion.div>
+
       {/* Subtítulo */}
       <motion.p
         className="text-center text-lg text-gray-700 mb-8"
@@ -119,12 +129,13 @@ const Nosotros = () => {
         talento y creatividad para llevar tus ideas a la vida. ¡Descubre lo que
         los motiva y su compromiso con la innovación!
       </motion.p>
+
       <div className="flex flex-col items-center">
         {/* Centrar las cartas */}
         {developers.map((developer, index) => (
           <motion.div
             key={index}
-            className={`flex flex-col md:flex-row items-center mb-12 justify-center w-full max-w-6xl p-6 bg-white bg-opacity-80 backdrop-blur-md rounded-lg shadow-md transform transition-transform duration-300 hover:shadow-lg hover:scale-105 ${
+            className={`flex flex-col md:flex-row items-center mb-12 justify-center w-full max-w-6xl p-6 bg-white bg-opacity-80 backdrop-blur-md rounded-lg shadow-md transform transition-transform duration-300 hover:shadow-lg hover:scale-105 $ {
               index % 2 === 0 ? "md:flex-row-reverse" : "md:flex-row"
             }`} // Fondo blanco y ligero efecto de vidrio
             initial={{ opacity: 0, y: 50 }} // Estado inicial
@@ -134,8 +145,9 @@ const Nosotros = () => {
           >
             <motion.img
               src={developer.image}
-              alt={developer.name}
-              className={`w-full md:w-[400px] h-[300px] object-cover rounded-lg shadow-sm transition-transform duration-300 ${
+              alt={`Imagen de ${developer.name}`}
+              loading="lazy" // Lazy loading
+              className={`w-full md:w-[400px] h-[300px] object-cover rounded-lg shadow-sm transition-transform duration-300 $ {
                 index % 2 === 0 ? "md:ml-6" : "md:mr-6"
               }`} // Ajustar margen específico a la imagen
               whileHover={{ scale: 1.05 }} // Efecto hover para la imagen
@@ -163,6 +175,7 @@ const Nosotros = () => {
                   href={developer.social.github}
                   target="_blank"
                   rel="noopener noreferrer"
+                  aria-label={`Perfil de GitHub de ${developer.name}`} // Añadido para accesibilidad
                   className="text-gray-600 hover:text-gray-800 transition-colors duration-300"
                 >
                   <FaGithub size={24} />
@@ -171,6 +184,7 @@ const Nosotros = () => {
                   href={developer.social.instagram}
                   target="_blank"
                   rel="noopener noreferrer"
+                  aria-label={`Perfil de Instagram de ${developer.name}`} // Añadido para accesibilidad
                   className="text-gray-600 hover:text-pink-600 transition-colors duration-300"
                 >
                   <FaInstagram size={24} />

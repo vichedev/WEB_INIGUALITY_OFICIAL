@@ -1,6 +1,10 @@
 /** @type {import('tailwindcss').Config} */
 export default {
-  content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
+  // Purge para eliminar clases no usadas en producción
+  content: [
+    "./index.html", 
+    "./src/**/*.{js,ts,jsx,tsx}"
+  ],
   theme: {
     extend: {
       colors: {
@@ -16,6 +20,17 @@ export default {
       animation: {
         "spin-slow": "spin-slow 20s linear infinite",
       },
+    },
+  },
+  // Eliminar clases no utilizadas en producción
+  purge: {
+    enabled: process.env.NODE_ENV === 'production', // Solo en producción
+    content: [
+      "./src/**/*.{js,jsx,ts,tsx}",
+      "./public/index.html"
+    ],
+    options: {
+      safelist: [], // Puedes agregar clases específicas que no quieres eliminar
     },
   },
   plugins: [],

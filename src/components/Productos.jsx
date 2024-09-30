@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { motion } from "framer-motion";
 import { FaWhatsapp } from "react-icons/fa";
 import PanZoom from "react-easy-panzoom";
+import { Helmet } from "react-helmet";
 
 const categories = [
   {
@@ -122,11 +123,9 @@ const Productos = () => {
   const handleOpenImagePreview = (image) => {
     const isMobile = window.innerWidth <= 768; // Verificar si es móvil
     if (isMobile) {
-      // Abre la imagen en una nueva ventana
       window.open(image, "_blank", "noopener,noreferrer");
     } else {
-      // Si es escritorio, abrir la vista previa en el modal
-      setSelectedImage(image);
+      setSelectedImage(image); // Si es escritorio, abrir la vista previa en el modal
     }
   };
 
@@ -143,25 +142,31 @@ const Productos = () => {
 
   return (
     <div className="relative py-40 px-4 md:px-16">
-      <div
-        className="absolute inset-0"
-        style={{
-          background:
-            "linear-gradient(135deg, rgba(255, 255, 255, 0.8), rgba(173, 216, 230, 0.8), rgba(240, 248, 255, 0.8))",
-          animation: "gradient 15s ease infinite",
-          backgroundSize: "400% 400%",
-          zIndex: -1, // Colocar el fondo detrás de los elementos
-        }}
-      />
-      <style>
-        {`
-          @keyframes gradient {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
+      {/* SEO Dinámico para la Página de Productos */}
+      <Helmet>
+        <title>
+          {activeCategory === "Todos"
+            ? "Nuestros Productos - InigualitySoft"
+            : `${activeCategory} - InigualitySoft`}
+        </title>
+        <meta
+          name="description"
+          content={
+            activeCategory === "Todos"
+              ? "Descubre nuestras soluciones digitales: sistemas de facturación, gestión ISP, bots, sistemas de tickets y servicios web personalizados."
+              : `Explora nuestros productos en la categoría de ${activeCategory}.`
           }
-        `}
-      </style>
+        />
+        <meta
+          name="keywords"
+          content={`productos, ${activeCategory}, software empresarial, desarrollo web, sistemas de gestión`}
+        />
+        <link
+          rel="canonical"
+          href={`https://www.inigualitysoft.com/productos/${activeCategory}`}
+        />
+      </Helmet>
+
       <motion.div
         className="flex justify-center mb-6"
         initial={{ opacity: 0, y: 20 }}
@@ -173,6 +178,7 @@ const Productos = () => {
           src="/img/textos/nuestrosproductos.webp"
           alt="Galería de Proyectos"
           className="w-full h-auto max-w-[600px]"
+          loading="lazy" // Carga diferida de la imagen
         />
       </motion.div>
       <motion.p
@@ -221,6 +227,7 @@ const Productos = () => {
               src={product.images[0]}
               alt={product.name}
               className="w-full h-50 object-cover rounded-lg"
+              loading="lazy" // Carga diferida de la imagen
             />
             <h3 className="text-center text-lg font-semibold">
               {product.name}
@@ -229,50 +236,72 @@ const Productos = () => {
         ))}
       </div>
       {/* Modal para producto seleccionado */}
-      {isModalOpen && (
-        <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-70 z-50 p-4">
-          <div className="bg-white rounded-lg p-6 max-w-4xl w-full shadow-lg overflow-hidden">
-            <h2 className="text-2xl font-semibold mb-4">
-              {selectedProduct.name}
-            </h2>
-            <p className="text-gray-600 mb-2">{selectedProduct.description}</p>
-            <p className="text-gray-500 mb-4">{selectedProduct.details}</p>
-            <p className="font-bold mb-2">{selectedProduct.price}</p>
-            <p className="text-gray-500 mb-4">
-              Contacto: {selectedProduct.contact}
-            </p>
-            <div className="flex items-center mb-4">
-              <a
-                href={`https://wa.me/+593991031784`}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center bg-green-500 text-white px-3 py-2 rounded hover:bg-green-600 transition duration-200"
-              >
-                <FaWhatsapp className="mr-2" /> Contáctanos por WhatsApp
-              </a>
-            </div>
-            <div className="overflow-auto max-h-60">
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                {selectedProduct.images.map((img, imgIdx) => (
-                  <motion.img
-                    key={imgIdx}
-                    src={img}
-                    alt={`Imagen ${imgIdx + 1}`}
-                    className="w-full h-32 object-cover rounded shadow cursor-pointer transition-transform duration-300 ease-in-out hover:scale-105"
-                    onClick={() => handleOpenImagePreview(img)} // Abre la vista previa al hacer clic
-                    whileHover={{ scale: 1.05 }}
-                  />
-                ))}
+      {isModalOpen && selectedProduct && (
+        <>
+          <Helmet>
+            <title>{`${selectedProduct.name} - InigualitySoft`}</title>
+            <meta
+              name="description"
+              content={`${selectedProduct.name}: ${selectedProduct.description}. ${selectedProduct.details}`}
+            />
+            <meta
+              name="keywords"
+              content={`${selectedProduct.name}, software, soluciones digitales`}
+            />
+            <meta property="og:image" content={selectedProduct.images[0]} />
+            <meta property="og:title" content={selectedProduct.name} />
+            <meta
+              property="og:description"
+              content={selectedProduct.description}
+            />
+          </Helmet>
+          <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-70 z-50 p-4">
+            <div className="bg-white rounded-lg p-6 max-w-4xl w-full shadow-lg overflow-hidden">
+              <h2 className="text-2xl font-semibold mb-4">
+                {selectedProduct.name}
+              </h2>
+              <p className="text-gray-600 mb-2">
+                {selectedProduct.description}
+              </p>
+              <p className="text-gray-500 mb-4">{selectedProduct.details}</p>
+              <p className="font-bold mb-2">{selectedProduct.price}</p>
+              <p className="text-gray-500 mb-4">
+                Contacto: {selectedProduct.contact}
+              </p>
+              <div className="flex items-center mb-4">
+                <a
+                  href={`https://wa.me/+593991031784`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center bg-green-500 text-white px-3 py-2 rounded hover:bg-green-600 transition duration-200"
+                >
+                  <FaWhatsapp className="mr-2" /> Contáctanos por WhatsApp
+                </a>
               </div>
+              <div className="overflow-auto max-h-60">
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                  {selectedProduct.images.map((img, imgIdx) => (
+                    <motion.img
+                      key={imgIdx}
+                      src={img}
+                      alt={`Imagen ${selectedProduct.name} ${imgIdx + 1}`}
+                      className="w-full h-32 object-cover rounded shadow cursor-pointer transition-transform duration-300 ease-in-out hover:scale-105"
+                      onClick={() => handleOpenImagePreview(img)} // Abre la vista previa al hacer clic
+                      loading="lazy" // Carga diferida de la imagen
+                      whileHover={{ scale: 1.05 }}
+                    />
+                  ))}
+                </div>
+              </div>
+              <button
+                onClick={handleCloseModal}
+                className="mt-4 bg-gray-600 text-white px-4 py-2 rounded hover:bg-gray-700 transition duration-200"
+              >
+                Cerrar
+              </button>
             </div>
-            <button
-              onClick={handleCloseModal}
-              className="mt-4 bg-gray-600 text-white px-4 py-2 rounded hover:bg-gray-700 transition duration-200"
-            >
-              Cerrar
-            </button>
           </div>
-        </div>
+        </>
       )}
       {/* Vista previa de imagen en modo escritorio */}
       {selectedImage && window.innerWidth > 768 && (
@@ -284,6 +313,7 @@ const Productos = () => {
                 alt="Vista previa"
                 className="w-full h-auto rounded mb-4"
                 style={{ maxHeight: "90vh", objectFit: "contain" }}
+                loading="lazy" // Carga diferida de la imagen
               />
             </PanZoom>
           </div>
