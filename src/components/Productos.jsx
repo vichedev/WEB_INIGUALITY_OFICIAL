@@ -10,11 +10,11 @@ const categories = [
       {
         name: "FactuCash",
         images: [
-          "/img/Productos/Facturacion/1.png",
-          "/img/Productos/Facturacion/2.png",
-          "/img/Productos/Facturacion/3.png",
-          "/img/Productos/Facturacion/4.png",
-          "/img/Productos/Facturacion/5.png",
+          "/img/Productos/Facturacion/1.webp",
+          "/img/Productos/Facturacion/2.webp",
+          "/img/Productos/Facturacion/3.webp",
+          "/img/Productos/Facturacion/4.webp",
+          "/img/Productos/Facturacion/5.webp",
         ],
         description: "Sistema completo para la gestión de facturas.",
         details: "Incluye funcionalidades para reportes y análisis.",
@@ -29,11 +29,11 @@ const categories = [
       {
         name: "ISPMAX",
         images: [
-          "/img/Productos/Isp/1.png",
-          "/img/productos/isp2.jpg",
-          "/img/productos/isp3.jpg",
-          "/img/productos/isp4.jpg",
-          "/img/productos/isp5.jpg",
+          "/img/Productos/Isp/1.webp",
+          "/img/Productos/Isp/2.webp",
+          "/img/Productos/Isp/3.webp",
+          "/img/Productos/Isp/4.webp",
+          "/img/Productos/Isp/5.webp",
         ],
         description:
           "Gestión integral para proveedores de servicios de internet.",
@@ -49,11 +49,11 @@ const categories = [
       {
         name: "WBOT",
         images: [
-          "/img/Productos/wbot/1.png",
-          "/img/Productos/wbot/2.png",
-          "/img/Productos/wbot/3.png",
-          "/img/Productos/wbot/4.png",
-          "/img/Productos/wbot/5.png",
+          "/img/Productos/wbot/1.webp",
+          "/img/Productos/wbot/2.webp",
+          "/img/Productos/wbot/3.webp",
+          "/img/Productos/wbot/4.webp",
+          "/img/Productos/wbot/5.webp",
         ],
         description: "Un bot de chat inteligente para atención al cliente.",
         details: "Facilita la interacción y mejora la atención al cliente.",
@@ -68,11 +68,11 @@ const categories = [
       {
         name: "FAST TICKET SYSTEM",
         images: [
-          "/img/Productos/ticket/1.png",
-          "/img/Productos/ticket/2.png",
-          "/img/Productos/ticket/3.png",
-          "/img/Productos/ticket/4.png",
-          "/img/Productos/ticket/5.png",
+          "/img/Productos/ticket/1.webp",
+          "/img/Productos/ticket/2.webp",
+          "/img/Productos/ticket/3.webp",
+          "/img/Productos/ticket/4.webp",
+          "/img/Productos/ticket/5.webp",
         ],
         description: "Sistema para la gestión de tickets de soporte.",
         details: "Organiza y resuelve tickets eficientemente.",
@@ -87,11 +87,11 @@ const categories = [
       {
         name: "WEB Personalizadas",
         images: [
-          "/img/Productos/Webs/1.png",
-          "/img/Productos/Webs/2.png",
-          "/img/Productos/Webs/3.png",
-          "/img/Productos/Webs/4.png",
-          "/img/Productos/Webs/5.png",
+          "/img/Productos/Webs/1.webp",
+          "/img/Productos/Webs/2.webp",
+          "/img/Productos/Webs/3.webp",
+          "/img/Productos/Webs/4.webp",
+          "/img/Productos/Webs/5.webp",
         ],
         description: "Desarrollo web a medida para tu negocio.",
         details: "Soluciones personalizadas según tus necesidades.",
@@ -170,7 +170,7 @@ const Productos = () => {
         transition={{ duration: 0.5 }}
       >
         <motion.img
-          src="/img/textos/nuestrosproductos.png"
+          src="/img/textos/nuestrosproductos.webp"
           alt="Galería de Proyectos"
           className="w-full h-auto max-w-[600px]"
         />

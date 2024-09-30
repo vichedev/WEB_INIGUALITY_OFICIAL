@@ -8,7 +8,7 @@ const developers = [
     role: "CEO",
     description:
       "Líder visionario con más de 10 años de experiencia en la industria del software. Apasionado por la innovación y la excelencia en el desarrollo de proyectos.",
-    image: "/public/img/cartas_dev/ken.png", // Ruta de la imagen del CEO
+    image: "/public/img/cartas_dev/ken.webp", // Ruta de la imagen del CEO
     social: {
       instagram: "https://instagram.com",
       github: "https://github.com",
@@ -19,7 +19,7 @@ const developers = [
     role: "Backend Developer",
     description:
       "Especialista en bases de datos y arquitecturas de software. Comprometido con la eficiencia y el rendimiento en el desarrollo backend.",
-    image: "/public/img/cartas_dev/ken.png", // Ruta de la imagen de Ariel
+    image: "/public/img/cartas_dev/ken.webp", // Ruta de la imagen de Ariel
     social: {
       instagram: "https://instagram.com",
       github: "https://github.com",
@@ -30,7 +30,7 @@ const developers = [
     role: "Backend Developer",
     description:
       "Desarrollador backend con experiencia en tecnologías como Node.js y Vue.js. Enfocado en crear soluciones escalables.",
-    image: "/public/img/cartas_dev/ken.png", // Ruta de la imagen de Ken
+    image: "/public/img/cartas_dev/ken.webp", // Ruta de la imagen de Ken
     social: {
       instagram: "https://instagram.com",
       github: "https://github.com",
@@ -41,7 +41,7 @@ const developers = [
     role: "Backend Developer",
     description:
       "Desarrollador backend apasionado por la seguridad y la robustez del software. Siempre en búsqueda de nuevas tecnologías.",
-    image: "/public/img/cartas_dev/ken.png", // Ruta de la imagen de Juan
+    image: "/public/img/cartas_dev/ken.webp", // Ruta de la imagen de Juan
     social: {
       instagram: "https://instagram.com",
       github: "https://github.com",
@@ -52,7 +52,7 @@ const developers = [
     role: "Diseñador UX/UI Frontend",
     description:
       "Diseñador creativo con un enfoque en la experiencia del usuario. Se especializa en interfaces atractivas y funcionales.",
-    image: "/public/img/cartas_dev/vice.png", // Ruta de la imagen de Vicente
+    image: "/public/img/cartas_dev/vice.webp", // Ruta de la imagen de Vicente
     social: {
       instagram: "https://instagram.com",
       github: "https://github.com",
@@ -102,7 +102,7 @@ const Nosotros = () => {
         transition={{ duration: 0.5 }} // Duración de la animación
       >
         <motion.img
-          src="/public/img/textos/nuestroequipo.png"
+          src="/public/img/textos/nuestroequipo.webp"
           alt="Galería de Proyectos"
           className="w-full h-auto max-w-[600px]"
         />

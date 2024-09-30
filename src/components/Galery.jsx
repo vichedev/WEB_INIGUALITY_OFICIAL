@@ -2,11 +2,11 @@ import React, { useState } from "react";
 import { motion } from "framer-motion";
 
 // Imágenes para los proyectos
-import imgProject1 from "/public/img/Productos/Facturacion/1.png"; // Reemplaza con la ruta real
-import imgProject2 from "/public/img/Productos/Isp/1.png"; // Reemplaza con la ruta real
-import imgProject3 from "/public/img/Productos/ticket/1.png"; // Reemplaza con la ruta real
-import imgProject4 from "/public/img/Productos/wbot/1.png"; // Reemplaza con la ruta real
-import imgProject5 from "/public/img/Productos/Webs/1.png"; // Reemplaza con la ruta real
+import imgProject1 from "/public/img/Productos/Facturacion/1.webp"; // Reemplaza con la ruta real
+import imgProject2 from "/public/img/Productos/Isp/1.webp"; // Reemplaza con la ruta real
+import imgProject3 from "/public/img/Productos/ticket/1.webp"; // Reemplaza con la ruta real
+import imgProject4 from "/public/img/Productos/wbot/1.webp"; // Reemplaza con la ruta real
+import imgProject5 from "/public/img/Productos/Webs/1.webp"; // Reemplaza con la ruta real
 
 const projects = [
   {
@@ -54,7 +54,7 @@ const Gallery = () => {
           transition={{ duration: 0.5 }} // Duración de la animación
         >
           <motion.img
-            src="/public/img/textos/galeriadeproyectos.png"
+            src="/public/img/textos/galeriadeproyectos.webp"
             alt="Galería de Proyectos"
             className="w-full h-auto max-w-[600px]"
           />

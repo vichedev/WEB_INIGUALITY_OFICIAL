@@ -2,12 +2,11 @@ import React from "react";
 import { motion } from "framer-motion";
 
 // Imágenes de los logos de los clientes
-import logo1 from "/public/img/clientes/red.png"; 
-import logo2 from "/public/img/clientes/inter.png"; 
-import logo3 from "/public/img/clientes/fiber.png"; 
-import logo4 from "/public/img/clientes/covirnet.png"; 
-import logo5 from "/public/img/clientes/academy.png"; 
-
+import logo1 from "/public/img/clientes/red.webp";
+import logo2 from "/public/img/clientes/inter.webp";
+import logo3 from "/public/img/clientes/fiber.webp";
+import logo4 from "/public/img/clientes/covirnet.webp";
+import logo5 from "/public/img/clientes/academy.webp";
 
 const clients = [
   { id: 1, logo: logo1 },
@@ -24,14 +23,14 @@ const Client = () => {
         {/* Encabezado con animación */}
         <motion.div
           className="container mx-auto text-center mb-12 relative z-10"
-          initial={{ opacity: 0, y: 20 }} 
-          whileInView={{ opacity: 1, y: 0 }} 
-          exit={{ opacity: 0, y: 20 }} 
-          transition={{ duration: 0.5 }} 
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0, y: 20 }}
+          transition={{ duration: 0.5 }}
         >
           <div className="flex justify-center">
             <motion.img
-              src="/public/img/textos/nuestrosclientes.png"
+              src="/public/img/textos/nuestrosclientes.webp"
               alt="Especialidades"
               className="w-full h-auto max-w-[600px] mb-6"
             />

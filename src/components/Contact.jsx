@@ -35,7 +35,7 @@ const Contact = () => {
         transition={{ duration: 0.5 }} // Duración de la animación
       >
         <motion.img
-          src="/public/img/textos/zonadecontactos.png"
+          src="/public/img/textos/zonadecontactos.webp"
           alt="Galería de Proyectos"
           className="w-full h-auto max-w-[600px]"
         />

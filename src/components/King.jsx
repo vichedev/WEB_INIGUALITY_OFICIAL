@@ -69,7 +69,7 @@ const King = () => {
       >
         <div className="flex justify-center">
           <motion.img
-            src="/public/img/textos/porqueelegirnos.png"
+            src="/public/img/textos/porqueelegirnos.webp"
             alt="Especialidades"
             className="w-full h-auto max-w-[500px] mb-6"
           />

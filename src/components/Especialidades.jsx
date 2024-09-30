@@ -92,7 +92,7 @@ const Especialidades = () => {
           {/* Tres imágenes en el centro, en columna */}
           <div className="flex-1 flex flex-col space-y-4 max-w-md">
             <motion.img
-              src="/public/img/Especialidades/laptop.png"
+              src="/public/img/Especialidades/laptop.webp"
               alt="Laptop 1"
               className="w-full h-auto rounded-lg shadow-md"
               initial={{ opacity: 0, scale: 0.8 }}
@@ -100,7 +100,7 @@ const Especialidades = () => {
               transition={{ duration: 0.8 }}
             />
             <motion.img
-              src="/public/img/Especialidades/laptop2.png"
+              src="/public/img/Especialidades/laptop2.webp"
               alt="Laptop 2"
               className="w-full h-auto rounded-lg shadow-md"
               initial={{ opacity: 0, scale: 0.8 }}
@@ -108,7 +108,7 @@ const Especialidades = () => {
               transition={{ duration: 0.8 }}
             />
             <motion.img
-              src="/public/img/Especialidades/laptop3.png"
+              src="/public/img/Especialidades/laptop3.webp"
               alt="Laptop 3"
               className="w-full h-auto rounded-lg shadow-md"
               initial={{ opacity: 0, scale: 0.8 }}
