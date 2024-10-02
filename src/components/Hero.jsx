@@ -9,7 +9,6 @@ const Hero = () => {
   const imgRef = useRef(null);
   const smallImgRef = useRef(null);
   const waveRef = useRef(null);
-
   const [iconsState, setIcons] = useState(() => createInitialIcons(10));
 
   function createInitialIcons(count) {
@@ -31,7 +30,6 @@ const Hero = () => {
   }
 
   useEffect(() => {
-    // Aquí se añade el preload para la imagen LCP
     const link = document.createElement("link");
     link.rel = "preload";
     link.as = "image";
@@ -96,6 +94,14 @@ const Hero = () => {
   const fadeInUp = {
     hidden: { opacity: 0, y: 20 },
     visible: { opacity: 1, y: 0 },
+  };
+
+  // Nueva función para el desplazamiento suave
+  const scrollToEspecialidades = () => {
+    const element = document.getElementById("especialidades");
+    if (element) {
+      element.scrollIntoView({ behavior: "smooth" });
+    }
   };
 
   return (
@@ -172,6 +178,7 @@ const Hero = () => {
           <motion.button
             aria-label="Descubre más sobre InigualitySoft"
             className="bg-cyan-700 text-white px-8 py-4 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105"
+            onClick={scrollToEspecialidades} // Cambiar el onClick para usar scrollToEspecialidades
             initial="hidden"
             animate="visible"
             variants={fadeInUp}
@@ -208,13 +215,13 @@ const Hero = () => {
             />
             <stop
               offset="100%"
-              style={{ stopColor: "#81D4FA", stopOpacity: 1 }} // Azul oscuro
+              style={{ stopColor: "#81D4FA", stopOpacity: 1 }} // Azul más oscuro
             />
           </linearGradient>
         </defs>
         <path
           fill="url(#waveGradient)"
-          d="M0,64L30,85.3C60,107,120,149,180,170.7C240,192,300,192,360,186.7C420,181,480,171,540,160C600,149,660,138,720,128C780,118,840,107,900,117.3C960,128,1020,160,1080,170.7C1140,181,1200,171,1260,149.3C1320,128,1380,96,1410,85.3L1440,75L1440,320L0,320Z"
+          d="M0,160L30,154.7C60,149,120,138,180,133.3C240,128,300,128,360,138.7C420,149,480,171,540,186.7C600,203,660,213,720,213.3C780,213,840,203,900,176C960,149,1020,107,1080,96C1140,85,1200,107,1260,138.3C1320,171,1380,213,1410,234.7L1440,256L1440,320L0,320Z"
         />
       </svg>
     </section>

@@ -12,7 +12,10 @@ import { Helmet } from "react-helmet"; // Importar Helmet para SEO
 
 const Especialidades = () => {
   return (
-    <section className="relative py-20 bg-white overflow-hidden">
+    <section
+      className="relative py-20 bg-white overflow-hidden"
+      id="especialidades"
+    >
       <Helmet>
         <title>Especialidades - InigualitySoft</title>
         <meta

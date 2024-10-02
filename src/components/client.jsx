@@ -38,8 +38,7 @@ const Client = () => {
             />
           </div>
           <motion.p className="text-lg text-gray-600 max-w-xl mx-auto">
-            Descubre las razones que nos hacen destacar en el desarrollo de
-            software y tecnología.
+            ¡Nuestros clientes confian en nuestro trabajo!
           </motion.p>
         </motion.div>
 

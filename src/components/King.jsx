@@ -10,12 +10,12 @@ import {
 } from "react-icons/fa";
 
 // Imágenes para las cartas
-import imgQuality from "/public/img/Hero/hero.webp"; // Reemplaza con la ruta real de la imagen
-import imgInnovation from "/public/img/Hero/hero.webp"; // Reemplaza con la ruta real de la imagen
-import imgSecurity from "/public/img/Hero/hero.webp"; // Reemplaza con la ruta real de la imagen
-import imgTeam from "/public/img/Hero/hero.webp"; // Reemplaza con la ruta real de la imagen
-import imgSolutions from "/public/img/Hero/hero.webp"; // Reemplaza con la ruta real de la imagen
-import imgCustomization from "/public/img/Hero/hero.webp"; // Reemplaza con la ruta real de la imagen
+import imgQuality from "/public/img/Kings/garantia.webp"; // Reemplaza con la ruta real de la imagen
+import imgInnovation from "/public/img/Kings/innovar.webp"; // Reemplaza con la ruta real de la imagen
+import imgSecurity from "/public/img/Kings/seguridad.webp"; // Reemplaza con la ruta real de la imagen
+import imgTeam from "/public/img/Kings/equipo.webp"; // Reemplaza con la ruta real de la imagen
+import imgSolutions from "/public/img/Kings/personalizado.webp"; // Reemplaza con la ruta real de la imagen
+import imgCustomization from "/public/img/Kings/mantenimiento.webp"; // Reemplaza con la ruta real de la imagen
 
 const King = () => {
   const slides = [
