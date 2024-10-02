@@ -3,12 +3,13 @@ import { FaReact, FaVuejs, FaNodeJs, FaHtml5, FaCss3Alt } from "react-icons/fa";
 import { SiAstro } from "react-icons/si";
 import { motion } from "framer-motion";
 import { Helmet } from "react-helmet";
+import { useNavigate } from "react-router-dom"; // Importar useNavigate
 
 // Componente Hero
 const Hero = () => {
   const imgRef = useRef(null);
-  const smallImgRef = useRef(null);
   const waveRef = useRef(null);
+  const navigate = useNavigate(); // Inicializar navigate
   const [iconsState, setIcons] = useState(() => createInitialIcons(10));
 
   function createInitialIcons(count) {
@@ -30,6 +31,7 @@ const Hero = () => {
   }
 
   useEffect(() => {
+    // Preload para la imagen LCP
     const link = document.createElement("link");
     link.rel = "preload";
     link.as = "image";
@@ -38,42 +40,6 @@ const Hero = () => {
 
     return () => {
       document.head.removeChild(link);
-    };
-  }, []);
-
-  const handleScroll = () => {
-    requestAnimationFrame(() => {
-      if (imgRef.current) {
-        const scrollY = window.scrollY;
-        const windowHeight = window.innerHeight;
-        const imgOffsetTop = imgRef.current.offsetTop;
-
-        const opacity = Math.max(
-          0,
-          Math.min(1, (windowHeight - scrollY + imgOffsetTop) / windowHeight)
-        );
-        imgRef.current.style.opacity = opacity;
-
-        const scale = Math.max(0.8, 1 - scrollY / 1000);
-        imgRef.current.style.transform = `scale(${scale})`;
-
-        if (smallImgRef.current) {
-          const translateY = scrollY * 0.05;
-          smallImgRef.current.style.transform = `translateY(${translateY}px) scale(0.8)`;
-        }
-
-        if (waveRef.current) {
-          const waveTranslateY = Math.sin(scrollY * 0.005) * 10;
-          waveRef.current.style.transform = `translateY(${waveTranslateY}px)`;
-        }
-      }
-    });
-  };
-
-  useEffect(() => {
-    window.addEventListener("scroll", handleScroll);
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
     };
   }, []);
 
@@ -103,7 +69,6 @@ const Hero = () => {
       element.scrollIntoView({ behavior: "smooth" });
     }
   };
-
   return (
     <section className="relative h-[90vh] flex items-center justify-center overflow-hidden mt-[10vh] bg-white">
       <Helmet>
@@ -215,13 +180,13 @@ const Hero = () => {
             />
             <stop
               offset="100%"
-              style={{ stopColor: "#81D4FA", stopOpacity: 1 }} // Azul más oscuro
+              style={{ stopColor: "#81D4FA", stopOpacity: 1 }} // Azul oscuro
             />
           </linearGradient>
         </defs>
         <path
           fill="url(#waveGradient)"
-          d="M0,160L30,154.7C60,149,120,138,180,133.3C240,128,300,128,360,138.7C420,149,480,171,540,186.7C600,203,660,213,720,213.3C780,213,840,203,900,176C960,149,1020,107,1080,96C1140,85,1200,107,1260,138.3C1320,171,1380,213,1410,234.7L1440,256L1440,320L0,320Z"
+          d="M0,64L30,85.3C60,107,120,149,180,170.7C240,192,300,192,360,186.7C420,181,480,171,540,160C600,149,660,138,720,128C780,118,840,107,900,117.3C960,128,1020,160,1080,170.7C1140,181,1200,171,1260,149.3C1320,128,1380,96,1410,85.3L1440,75L1440,320L0,320Z"
         />
       </svg>
     </section>

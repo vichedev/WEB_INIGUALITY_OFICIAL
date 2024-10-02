@@ -6,16 +6,14 @@ const TopUpButton = () => {
 
   // Función para desplazarse suavemente hacia arriba
   const smoothScrollToTop = () => {
-    let currentPosition = window.pageYOffset;
-    const scrollStep = currentPosition / 10;
+    const scrollStep = -window.scrollY / 30; // Cambia este valor para ajustar la velocidad
     const scrollInterval = setInterval(() => {
-      if (currentPosition > 0) {
-        window.scrollTo(0, currentPosition - scrollStep);
-        currentPosition -= scrollStep;
+      if (window.scrollY !== 0) {
+        window.scrollBy(0, scrollStep);
       } else {
         clearInterval(scrollInterval);
       }
-    }, 15);
+    }, 15); // Tiempo del intervalo para un movimiento suave
   };
 
   // Mostrar el botón cuando el usuario hace scroll hacia abajo
