@@ -14,6 +14,8 @@ import Footer from "./components/Footer";
 import Nosotros from "./components/Nosotros";
 import Productos from "./components/Productos";
 import Contact from "./components/Contact";
+import TopUpButton from "./components/TopUpButton"; // Importa el componente de "Top Up"
+import ChatWidget from "./components/ChatWidget";
 
 // Componente ScrollToTop
 const ScrollToTop = () => {
@@ -31,7 +33,8 @@ const ScrollToTop = () => {
 function App() {
   return (
     <Router>
-      <ScrollToTop /> {/* Componente ScrollToTop para desplazarse a la parte superior */}
+      <ScrollToTop />{" "}
+      {/* Componente ScrollToTop para desplazarse a la parte superior */}
       <Header />
       <div style={{ minHeight: "100vh" }}>
         <Routes>
@@ -93,6 +96,8 @@ function App() {
           />
         </Routes>
       </div>
+      <TopUpButton />
+      <ChatWidget />
       <Footer />
     </Router>
   );
