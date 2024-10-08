@@ -20,7 +20,7 @@ const developers = [
     role: "Backend Developer",
     description:
       "Especialista en bases de datos y arquitecturas de software. Comprometido con la eficiencia y el rendimiento en el desarrollo backend.",
-    image: "/public/img/cartas_dev/ken.webp", // Ruta de la imagen de Ariel
+    image: "/public/img/cartas_dev/ken.png", // Ruta de la imagen de Ariel
     social: {
       instagram: "https://instagram.com",
       github: "https://github.com",
@@ -38,11 +38,11 @@ const developers = [
     },
   },
   {
-    name: "Ing Juan",
+    name: "Ing Juan Saa",
     role: "Backend Developer",
     description:
       "Desarrollador backend apasionado por la seguridad y la robustez del software. Siempre en búsqueda de nuevas tecnologías.",
-    image: "/public/img/cartas_dev/ken.webp", // Ruta de la imagen de Juan
+    image: "/public/img/cartas_dev/juan_dev.webp", // Ruta de la imagen de Juan
     social: {
       instagram: "https://instagram.com",
       github: "https://github.com",
@@ -65,7 +65,7 @@ const colorMap = {
   "Ing Manuel Tandazo Mera": "text-blue-600",
   "Ing Ariel Fajardo": "text-green-600",
   "Ing Ken Aguirre": "text-red-600",
-  "Ing Juan": "text-purple-600",
+  "Ing Juan Saa": "text-purple-600",
   "Ing Vicente Zamora": "text-orange-600",
 };
 

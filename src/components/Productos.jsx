@@ -101,6 +101,25 @@ const categories = [
       },
     ],
   },
+  {
+    name: "Servicios HotSpot",
+    products: [
+      {
+        name: "HotSpot Personalizados",
+        images: [
+          "/img/Productos/hotspot/1.webp",
+          "/img/Productos/hotspot/2.webp",
+          "/img/Productos/hotspot/3.webp",
+          "/img/Productos/hotspot/4.webp",
+          "/img/Productos/hotspot/5.webp",
+        ],
+        description: "Desarrollo de Hotspot personalizados.",
+        details: "Soluciones según tus necesidades.",
+        price: "$150",
+        contact: "info@inigualitysoft.com",
+      },
+    ],
+  },
 ];
 
 const Productos = () => {
@@ -192,7 +211,7 @@ const Productos = () => {
         negocio con herramientas innovadoras y eficientes.
       </motion.p>
       {/* Barra de filtrado */}
-      <div className="grid grid-cols-2 md:grid-cols-6 gap-4 mb-8">
+      <div className="flex flex-wrap justify-center gap-4 overflow-x-auto mb-8">
         {[
           "Todos",
           "Sistema de Facturación",
@@ -200,11 +219,12 @@ const Productos = () => {
           "Sistema de Bot",
           "Sistema de Tickets",
           "Servicios Web Personalizados",
+          "Servicios HotSpot",
         ].map((category) => (
           <button
             key={category}
             onClick={() => handleFilterChange(category)}
-            className={`px-4 py-2 rounded transition duration-200 ${
+            className={`px-4 py-2 whitespace-nowrap rounded transition duration-200 ${
               activeCategory === category
                 ? "bg-blue-600 text-white"
                 : "bg-gray-200 text-gray-700 hover:bg-gray-300"
@@ -214,6 +234,7 @@ const Productos = () => {
           </button>
         ))}
       </div>
+
       {/* Productos */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
         {filteredProducts.map((product, idx) => (
@@ -295,7 +316,7 @@ const Productos = () => {
               </div>
               <button
                 onClick={handleCloseModal}
-                className="mt-4 bg-gray-600 text-white px-4 py-2 rounded hover:bg-gray-700 transition duration-200"
+                className="mt-4 bg-red-600 text-white px-4 py-2 rounded hover:bg-gray-700 transition duration-200"
               >
                 Cerrar
               </button>
@@ -319,7 +340,7 @@ const Productos = () => {
           </div>
           <button
             onClick={() => setSelectedImage(null)} // Cierra solo la vista previa
-            className="absolute top-4 right-4 bg-gray-600 text-white px-4 py-2 rounded hover:bg-gray-700 transition duration-200"
+            className="absolute top-4 right-4 bg-red-600 text-white px-4 py-2 rounded hover:bg-gray-700 transition duration-200"
           >
             Cerrar Vista Previa
           </button>
