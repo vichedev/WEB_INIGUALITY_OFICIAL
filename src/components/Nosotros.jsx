@@ -8,27 +8,27 @@ const developers = [
     name: "Ing Manuel Tandazo Mera",
     role: "CEO",
     description:
-      "Líder visionario con más de 10 años de experiencia en la industria del software. Apasionado por la innovación y la excelencia en el desarrollo de proyectos.",
-    image: "/public/img/cartas_dev/ken.webp", // Ruta de la imagen del CEO
+      "Líder visionario con más de 10 años de experiencia en la industria de Telecomunicaciones. Apasionado por la innovación y la excelencia en el desarrollo de proyectos.",
+    image: "/public/img/cartas_dev/Manuel.webp", // Ruta de la imagen del CEO
     social: {
-      instagram: "https://instagram.com",
-      github: "https://github.com",
+      instagram: "https://www.instagram.com/rednuevaconexion.ec/?hl=es",
+      github: "https://github.com/ManuelTandazo",
     },
   },
   {
     name: "Ing Ariel Fajardo",
-    role: "Backend Developer",
+    role: "Fullstack Developer",
     description:
-      "Especialista en bases de datos y arquitecturas de software. Comprometido con la eficiencia y el rendimiento en el desarrollo backend.",
-    image: "/public/img/cartas_dev/ken.png", // Ruta de la imagen de Ariel
+      "Desarrollador Fullstack con experiencia en React y Node.js. Apasionado por la creación de aplicaciones web eficientes y escalables, optimizando la experiencia del usuario y el rendimiento del servidor.",
+    image: "/public/img/cartas_dev/ariel_dev.webp", // Ruta de la imagen de Ariel
     social: {
       instagram: "https://instagram.com",
-      github: "https://github.com",
+      github: "https://github.com/Ultimategamer777",
     },
   },
   {
     name: "Ing Ken Aguirre",
-    role: "Backend Developer",
+    role: "Fullstack Developer",
     description:
       "Desarrollador backend con experiencia en tecnologías como Node.js y Vue.js. Enfocado en crear soluciones escalables.",
     image: "/public/img/cartas_dev/ken.webp", // Ruta de la imagen de Ken
@@ -39,18 +39,19 @@ const developers = [
   },
   {
     name: "Ing Juan Saa",
-    role: "Backend Developer",
+    role: "Fullstack Developer",
     description:
-      "Desarrollador backend apasionado por la seguridad y la robustez del software. Siempre en búsqueda de nuevas tecnologías.",
+      "Desarrollador Frontend vuejs, react, especialista en nodejs, nest, laravel tecnologias Backend Siempre en búsqueda de nuevas tecnologías.",
     image: "/public/img/cartas_dev/juan_dev.webp", // Ruta de la imagen de Juan
     social: {
-      instagram: "https://instagram.com",
-      github: "https://github.com",
+      instagram:
+        "https://www.instagram.com/fernando_saa_?igsh=MTRnOHBibjJvMWxjNg==",
+      github: "https://github.com/Ferjebay",
     },
   },
   {
     name: "Ing Vicente Zamora",
-    role: "Diseñador UX/UI Frontend",
+    role: "Fullstack Developer",
     description:
       "Diseñador creativo con un enfoque en la experiencia del usuario. Se especializa en interfaces atractivas y funcionales.",
     image: "/public/img/cartas_dev/vice.webp", // Ruta de la imagen de Vicente
@@ -135,29 +136,28 @@ const Nosotros = () => {
         {developers.map((developer, index) => (
           <motion.div
             key={index}
-            className={`flex flex-col md:flex-row items-center mb-12 justify-center w-full max-w-6xl p-6 bg-white bg-opacity-80 backdrop-blur-md rounded-lg shadow-md transform transition-transform duration-300 hover:shadow-lg hover:scale-105 $ {
+            className={`flex flex-col md:flex-row items-center mb-12 justify-center w-full max-w-6xl p-6 bg-white bg-opacity-80 backdrop-blur-md rounded-lg shadow-md transform transition-transform duration-300 hover:shadow-lg hover:scale-105 ${
               index % 2 === 0 ? "md:flex-row-reverse" : "md:flex-row"
             }`} // Fondo blanco y ligero efecto de vidrio
             initial={{ opacity: 0, y: 50 }} // Estado inicial
             whileInView={{ opacity: 1, y: 0 }} // Estado al estar en vista
             transition={{ duration: 0.6 }} // Duración de la animación
             viewport={{ once: false }} // Permitir que se active varias veces
+            style={{ gap: "24px" }} // Añadir el gap entre la imagen y el texto
           >
-            <motion.img
-              src={developer.image}
-              alt={`Imagen de ${developer.name}`}
-              loading="lazy" // Lazy loading
-              className={`w-full md:w-[400px] h-[300px] object-cover rounded-lg shadow-sm transition-transform duration-300 $ {
-                index % 2 === 0 ? "md:ml-6" : "md:mr-6"
-              }`} // Ajustar margen específico a la imagen
-              whileHover={{ scale: 1.05 }} // Efecto hover para la imagen
-            />
-            {/* Nuevo div para el texto */}
-            <div
-              className={`text-left ${
-                index % 2 === 0 ? "md:mr-6" : "md:ml-6"
-              } mb-4 md:mb-0 flex flex-col`}
-            >
+            {/* Contenedor de la imagen */}
+            <div className="w-full md:w-[400px] h-[300px] md:flex-shrink-0 mb-4 md:mb-0">
+              <motion.img
+                src={developer.image}
+                alt={`Imagen de ${developer.name}`}
+                loading="lazy" // Lazy loading
+                className="w-full h-full object-cover rounded-lg shadow-sm transition-transform duration-300"
+                whileHover={{ scale: 1.05 }} // Efecto hover para la imagen
+              />
+            </div>
+
+            {/* Contenedor del texto */}
+            <div className={`text-left flex flex-col`}>
               <h2
                 className={`${
                   colorMap[developer.name]
@@ -198,4 +198,4 @@ const Nosotros = () => {
   );
 };
 
-export default Nosotros; // Exportar el componente
+export default Nosotros;
