@@ -31,7 +31,7 @@ const developers = [
     role: "Fullstack Developer",
     description:
       "Desarrollador full stack con sólida experiencia en tecnologías como Node.js y Vue.js. Especializado en la creación de soluciones escalables y eficientes",
-    image: "/public/img/cartas_dev/ken.png", // Ruta de la imagen de Ken
+    image: "/public/img/cartas_dev/ken.webp", // Ruta de la imagen de Ken
     social: {
       instagram: "https://instagram.com",
       github: "https://github.com",

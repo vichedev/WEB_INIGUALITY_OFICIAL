@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { motion } from "framer-motion";
-import { Helmet } from "react-helmet"; // Importar Helmet para SEO
+// import { Helmet } from "react-helmet";
 
 // Imágenes para los proyectos
 import imgProject1 from "/public/img/Productos/Facturacion/1.webp"; // Reemplaza con la ruta real
@@ -8,6 +8,8 @@ import imgProject2 from "/public/img/Productos/Isp/1.webp"; // Reemplaza con la 
 import imgProject3 from "/public/img/Productos/ticket/1.webp"; // Reemplaza con la ruta real
 import imgProject4 from "/public/img/Productos/wbot/1.webp"; // Reemplaza con la ruta real
 import imgProject5 from "/public/img/Productos/Webs/1.webp"; // Reemplaza con la ruta real
+import imgProject6 from "/public/img/Productos/hotspot/1.webp"; // Reemplaza con la ruta real
+import imgProject7 from "/public/img/Productos/Diseño/1.webp"; // Reemplaza con la ruta real
 
 const projects = [
   {
@@ -29,6 +31,14 @@ const projects = [
   {
     title: "Proyecto 5",
     image: imgProject5,
+  },
+  {
+    title: "Proyecto 6",
+    image: imgProject6,
+  },
+  {
+    title: "Proyecto 7",
+    image: imgProject7,
   },
 ];
 

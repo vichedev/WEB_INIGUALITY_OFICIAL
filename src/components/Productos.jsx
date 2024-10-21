@@ -126,11 +126,11 @@ const categories = [
       {
         name: "Diseño Grafico",
         images: [
-          "/img/Productos/Diseño/1.png",
-          "/img/Productos/Diseño/2.png",
-          "/img/Productos/Diseño/3.png",
-          "/img/Productos/Diseño/4.png",
-          "/img/Productos/Diseño/5.png",
+          "/img/Productos/Diseño/1.webp",
+          "/img/Productos/Diseño/2.webp",
+          "/img/Productos/Diseño/3.webp",
+          "/img/Productos/Diseño/4.webp",
+          "/img/Productos/Diseño/5.webp",
         ],
         description: "Rebranding de Marca.",
         details: "Rediseñamos tu marca, tu logo al siguiente nivel!!.",
