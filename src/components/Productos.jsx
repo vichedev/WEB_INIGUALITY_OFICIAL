@@ -120,6 +120,25 @@ const categories = [
       },
     ],
   },
+  {
+    name: "Servicios de Diseño Grafico",
+    products: [
+      {
+        name: "Diseño Grafico",
+        images: [
+          "/img/Productos/Diseño/1.png",
+          "/img/Productos/Diseño/2.png",
+          "/img/Productos/Diseño/3.png",
+          "/img/Productos/Diseño/4.png",
+          "/img/Productos/Diseño/5.png",
+        ],
+        description: "Rebranding de Marca.",
+        details: "Rediseñamos tu marca, tu logo al siguiente nivel!!.",
+        price: "$250",
+        contact: "info@inigualitysoft.com",
+      },
+    ],
+  },
 ];
 
 const Productos = () => {
@@ -220,6 +239,7 @@ const Productos = () => {
           "Sistema de Tickets",
           "Servicios Web Personalizados",
           "Servicios HotSpot",
+          "Servicios de Diseño Grafico",
         ].map((category) => (
           <button
             key={category}
