@@ -1,34 +1,26 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { FaReact, FaVuejs, FaNodeJs, FaHtml5, FaCss3Alt } from "react-icons/fa";
 import { SiAstro } from "react-icons/si";
 import { motion } from "framer-motion";
 import { Helmet } from "react-helmet";
-import { useNavigate } from "react-router-dom"; // Importar useNavigate
+import { useNavigate } from "react-router-dom";
 
-// Componente Hero
+// Componente memoizado para los íconos
+const IconComponent = React.memo(({ icon, x, y, rotation }) => (
+  <motion.div
+    className="absolute"
+    style={{ transform: `translate(${x}px, ${y}px) rotate(${rotation}deg)` }}
+    initial={{ opacity: 0 }}
+    animate={{ opacity: 0.8 }}
+    transition={{ duration: 1 }}
+  >
+    {icon}
+  </motion.div>
+));
+
 const Hero = () => {
-  const imgRef = useRef(null);
-  const waveRef = useRef(null);
-  const navigate = useNavigate(); // Inicializar navigate
-  const [iconsState, setIcons] = useState(() => createInitialIcons(10));
-
-  function createInitialIcons(count) {
-    return Array.from({ length: count }, (_, index) => ({
-      component: (
-        <>
-          {index % 6 === 0 && <FaReact color="#61DBFB" size={60} />}
-          {index % 6 === 1 && <SiAstro color="#FF5C00" size={60} />}
-          {index % 6 === 2 && <FaVuejs color="#41B883" size={60} />}
-          {index % 6 === 3 && <FaNodeJs color="#8CC84B" size={60} />}
-          {index % 6 === 4 && <FaHtml5 color="#E44D26" size={60} />}
-          {index % 6 === 5 && <FaCss3Alt color="#1572B6" size={60} />}
-        </>
-      ),
-      x: Math.random() * window.innerWidth,
-      y: Math.random() * window.innerHeight,
-      rotation: Math.random() * 360,
-    }));
-  }
+  const navigate = useNavigate();
+  const [iconsState, setIcons] = useState([]);
 
   useEffect(() => {
     // Preload para la imagen LCP
@@ -44,17 +36,25 @@ const Hero = () => {
   }, []);
 
   useEffect(() => {
-    const interval = setInterval(() => {
-      setIcons((prevIcons) =>
-        prevIcons.map((icon) => ({
-          ...icon,
-          x: Math.random() * window.innerWidth,
-          y: Math.random() * window.innerHeight,
-          rotation: Math.random() * 360,
-        }))
-      );
-    }, 3000);
-    return () => clearInterval(interval);
+    const createInitialIcons = (count) => {
+      return Array.from({ length: count }, (_, index) => ({
+        component: (
+          <>
+            {index % 6 === 0 && <FaReact color="#61DBFB" size={60} />}
+            {index % 6 === 1 && <SiAstro color="#FF5C00" size={60} />}
+            {index % 6 === 2 && <FaVuejs color="#41B883" size={60} />}
+            {index % 6 === 3 && <FaNodeJs color="#8CC84B" size={60} />}
+            {index % 6 === 4 && <FaHtml5 color="#E44D26" size={60} />}
+            {index % 6 === 5 && <FaCss3Alt color="#1572B6" size={60} />}
+          </>
+        ),
+        x: Math.random() * window.innerWidth,
+        y: Math.random() * window.innerHeight,
+        rotation: Math.random() * 360,
+      }));
+    };
+
+    setIcons(createInitialIcons(10));
   }, []);
 
   const fadeInUp = {
@@ -62,13 +62,13 @@ const Hero = () => {
     visible: { opacity: 1, y: 0 },
   };
 
-  // Nueva función para el desplazamiento suave
   const scrollToEspecialidades = () => {
     const element = document.getElementById("especialidades");
     if (element) {
       element.scrollIntoView({ behavior: "smooth" });
     }
   };
+
   return (
     <section className="relative h-[90vh] flex items-center justify-center overflow-hidden mt-[10vh] bg-white">
       <Helmet>
@@ -83,26 +83,24 @@ const Hero = () => {
       <div className="absolute inset-0">
         <img
           src="/public/img/Hero/fondo.webp"
+          srcSet="/public/img/Hero/fondomobile.jpg 600w, /public/img/Hero/fondo.jpg 1200w"
+          sizes="(max-width: 600px) 600px, 1200px"
           alt="Fondo creativo de InigualitySoft"
-          className="w-full h-full object-cover"
-          loading="eager" // Carga inmediata
+          className="object-cover w-full h-full"
+          loading="eager"
         />
       </div>
 
       {/* Iconos en el fondo */}
-      <div className="absolute inset-0 opacity-30 pointer-events-none">
+      <div className="absolute inset-0 pointer-events-none opacity-30">
         {iconsState.map((icon, index) => (
-          <div
+          <IconComponent
             key={index}
-            className="absolute transition-all duration-1000"
-            style={{
-              transform: `translate(${icon.x}px, ${icon.y}px) rotate(${icon.rotation}deg)`,
-              opacity: 0.8,
-              zIndex: -1,
-            }}
-          >
-            {icon.component}
-          </div>
+            icon={icon.component}
+            x={icon.x}
+            y={icon.y}
+            rotation={icon.rotation}
+          />
         ))}
       </div>
 
@@ -110,17 +108,19 @@ const Hero = () => {
       <div className="absolute inset-0 hidden md:block">
         <img
           src="/public/img/Hero/iniguality.webp"
+          srcSet="/public/img/Hero/initable.png 600w, /public/img/Hero/ini.png 1200w"
+          sizes="(max-width: 600px) 600px, 1200px"
           alt="Equipo de InigualitySoft trabajando"
-          className="w-full h-full object-cover transform translate-x-1/4"
-          loading="lazy" // Lazy loading para la imagen no crítica
+          className="object-cover w-full h-full transform translate-x-1/4"
+          loading="lazy"
         />
       </div>
 
       {/* Contenido principal */}
-      <div className="container mx-auto flex flex-col xl:flex-row items-center justify-between gap-10 px-6 relative z-10">
-        <div className="text-left flex-1">
+      <div className="container relative z-10 flex flex-col items-center justify-between gap-10 px-6 mx-auto xl:flex-row">
+        <div className="flex-1 text-left">
           <motion.h1
-            className="text-4xl xl:text-6xl font-bold text-primary mb-4 drop-shadow-lg"
+            className="mb-4 text-4xl font-bold xl:text-6xl text-primary drop-shadow-lg"
             initial="hidden"
             animate="visible"
             variants={fadeInUp}
@@ -131,7 +131,7 @@ const Hero = () => {
           </motion.h1>
 
           <motion.p
-            className="text-lg xl:text-xl text-gray-700 mb-6 drop-shadow-lg"
+            className="mb-6 text-lg text-gray-700 xl:text-xl drop-shadow-lg"
             initial="hidden"
             animate="visible"
             variants={fadeInUp}
@@ -142,8 +142,8 @@ const Hero = () => {
 
           <motion.button
             aria-label="Descubre más sobre InigualitySoft"
-            className="bg-cyan-700 text-white px-8 py-4 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105"
-            onClick={scrollToEspecialidades} // Cambiar el onClick para usar scrollToEspecialidades
+            className="px-8 py-4 text-white transition-all duration-300 transform rounded-full shadow-lg bg-cyan-700 hover:shadow-xl hover:scale-105"
+            onClick={scrollToEspecialidades}
             initial="hidden"
             animate="visible"
             variants={fadeInUp}
@@ -157,17 +157,17 @@ const Hero = () => {
         <div className="flex-1 md:hidden">
           <img
             src="/public/img/Hero/hero.webp"
+            srcSet="/public/img/Hero/mobilehero.png 400w, /public/img/Hero/hero_large.webp 800w"
+            sizes="(max-width: 600px) 400px, 800px"
             alt="Equipo de desarrollo en InigualitySoft"
-            ref={imgRef}
             className="w-full h-auto max-w-[500px] transition-opacity duration-300"
-            loading="lazy" // Lazy loading
+            loading="lazy"
           />
         </div>
       </div>
 
       {/* Ola de fondo con gradiente mejorado */}
       <svg
-        ref={waveRef}
         className="absolute bottom-0 w-full"
         viewBox="0 0 1440 210"
         preserveAspectRatio="xMidYMax slice"
@@ -176,11 +176,11 @@ const Hero = () => {
           <linearGradient id="waveGradient" x1="0%" x2="100%" y1="0%" y2="100%">
             <stop
               offset="0%"
-              style={{ stopColor: "#B3E5FC", stopOpacity: 1 }} // Azul claro
+              style={{ stopColor: "#B3E5FC", stopOpacity: 1 }}
             />
             <stop
               offset="100%"
-              style={{ stopColor: "#81D4FA", stopOpacity: 1 }} // Azul oscuro
+              style={{ stopColor: "#81D4FA", stopOpacity: 1 }}
             />
           </linearGradient>
         </defs>

@@ -1,22 +1,20 @@
 import React, { useState, useEffect } from "react";
-import { FaArrowUp } from "react-icons/fa"; // Importar el icono de subida desde react-icons
+import { FaArrowUp } from "react-icons/fa";
 
-const TopUpButton = () => {
+const TopUpButton = ({ isChatOpen }) => {
   const [showButton, setShowButton] = useState(false);
 
-  // Función para desplazarse suavemente hacia arriba
   const smoothScrollToTop = () => {
-    const scrollStep = -window.scrollY / 30; // Cambia este valor para ajustar la velocidad
+    const scrollStep = -window.scrollY / 30;
     const scrollInterval = setInterval(() => {
       if (window.scrollY !== 0) {
         window.scrollBy(0, scrollStep);
       } else {
         clearInterval(scrollInterval);
       }
-    }, 15); // Tiempo del intervalo para un movimiento suave
+    }, 15);
   };
 
-  // Mostrar el botón cuando el usuario hace scroll hacia abajo
   useEffect(() => {
     const handleScroll = () => {
       if (window.pageYOffset > 300) {
@@ -36,8 +34,14 @@ const TopUpButton = () => {
   return (
     <>
       {showButton && (
-        <button onClick={smoothScrollToTop} style={styles.button}>
-          <FaArrowUp style={styles.icon} /> {/* Icono de subida */}
+        <button
+          onClick={smoothScrollToTop}
+          style={{
+            ...styles.button,
+            bottom: isChatOpen ? "90px" : "20px", // Ajustar posición si el chat está abierto
+          }}
+        >
+          <FaArrowUp style={styles.icon} />
         </button>
       )}
     </>
@@ -47,9 +51,8 @@ const TopUpButton = () => {
 const styles = {
   button: {
     position: "fixed",
-    bottom: "20px", // Mantenerlo justo a la izquierda del botón de WhatsApp
-    right: "90px", // Ajustar para que esté a la izquierda del botón de WhatsApp
-    width: "60px", // Asegurarse de que tenga el mismo tamaño que el botón de WhatsApp
+    right: "20px", // Mantenerlo justo a la izquierda del botón de WhatsApp
+    width: "60px",
     height: "60px",
     borderRadius: "50%",
     background: "linear-gradient(135deg, #a0c4ff, #3a86ff)",

@@ -34,7 +34,7 @@ const developers = [
     image: "/public/img/cartas_dev/ken.webp", // Ruta de la imagen de Ken
     social: {
       instagram: "https://instagram.com",
-      github: "https://github.com",
+      github: "https://github.com/EdgarLennon",
     },
   },
   {
@@ -54,10 +54,10 @@ const developers = [
     role: "Fullstack Developer",
     description:
       "Diseñador creativo con un enfoque en la experiencia del usuario. Se especializa en interfaces atractivas y funcionales.",
-    image: "/public/img/cartas_dev/vice.webp", // Ruta de la imagen de Vicente
+    image: "/public/img/cartas_dev/vice_dev.webp", // Ruta de la imagen de Vicente
     social: {
       instagram: "https://instagram.com",
-      github: "https://github.com",
+      github: "https://github.com/vichedev",
     },
   },
 ];
@@ -72,7 +72,7 @@ const colorMap = {
 
 const Nosotros = () => {
   return (
-    <div className="relative py-40 px-4 md:px-16">
+    <div className="relative px-4 py-40 md:px-16">
       <Helmet>
         <title>Conoce Nuestro Equipo - InigualitySoft</title>
         <meta
@@ -120,7 +120,7 @@ const Nosotros = () => {
 
       {/* Subtítulo */}
       <motion.p
-        className="text-center text-lg text-gray-700 mb-8"
+        className="mb-8 text-lg text-center text-gray-700"
         initial={{ opacity: 0, y: 20 }} // Estado inicial
         whileInView={{ opacity: 1, y: 0 }} // Estado al entrar en vista
         exit={{ opacity: 0, y: 20 }} // Estado al salir de vista
@@ -151,7 +151,7 @@ const Nosotros = () => {
                 src={developer.image}
                 alt={`Imagen de ${developer.name}`}
                 loading="lazy" // Lazy loading
-                className="w-full h-full object-cover rounded-lg shadow-sm transition-transform duration-300"
+                className="object-cover w-full h-full transition-transform duration-300 rounded-lg shadow-sm"
                 whileHover={{ scale: 1.05 }} // Efecto hover para la imagen
               />
             </div>
@@ -166,17 +166,17 @@ const Nosotros = () => {
                 {developer.name}
               </h2>
               <p className="text-gray-600">{developer.role}</p>
-              <p className="mt-2 text-gray-500 text-justify">
+              <p className="mt-2 text-justify text-gray-500">
                 {developer.description}
               </p>
               {/* Iconos de redes sociales */}
-              <div className="mt-4 flex space-x-4">
+              <div className="flex mt-4 space-x-4">
                 <a
                   href={developer.social.github}
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label={`Perfil de GitHub de ${developer.name}`} // Añadido para accesibilidad
-                  className="text-gray-600 hover:text-gray-800 transition-colors duration-300"
+                  className="text-gray-600 transition-colors duration-300 hover:text-gray-800"
                 >
                   <FaGithub size={24} />
                 </a>
@@ -185,7 +185,7 @@ const Nosotros = () => {
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label={`Perfil de Instagram de ${developer.name}`} // Añadido para accesibilidad
-                  className="text-gray-600 hover:text-pink-600 transition-colors duration-300"
+                  className="text-gray-600 transition-colors duration-300 hover:text-pink-600"
                 >
                   <FaInstagram size={24} />
                 </a>

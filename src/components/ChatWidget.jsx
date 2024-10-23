@@ -1,14 +1,15 @@
 import React, { useState } from "react";
 import { FaWhatsapp } from "react-icons/fa"; // Icono de WhatsApp
 import { IoClose } from "react-icons/io5"; // Icono de cerrar más elegante
-import inigualityLogo from "/img/icon_whatsapp/icon.webp"; // Asegúrate de tener la imagen de contacto en la carpeta public/img
+import inigualityLogo from "/img/icon_whatsapp/icon.webp"; // Asegúrate de tener la imagen de contacto
 
-const ChatWidget = () => {
+const ChatWidget = ({ onToggleChat }) => {
   const [isChatOpen, setIsChatOpen] = useState(false);
   const [message, setMessage] = useState("");
 
   const toggleChat = () => {
     setIsChatOpen(!isChatOpen);
+    onToggleChat(!isChatOpen); // Notificamos el estado del chat
   };
 
   const handleMessageChange = (e) => {
@@ -21,17 +22,16 @@ const ChatWidget = () => {
       message
     )}`;
 
-    // Verifica que el mensaje no esté vacío antes de abrir el enlace
     if (message.trim()) {
       window.open(url, "_blank");
-      setMessage(""); // Limpia el mensaje después de enviarlo
+      setMessage("");
     } else {
-      alert("Por favor, escribe un mensaje antes de enviar."); // Alerta si el mensaje está vacío
+      alert("Por favor, escribe un mensaje antes de enviar.");
     }
   };
 
   const handleSuggestedResponse = (suggestion) => {
-    setMessage(suggestion); // Coloca la respuesta sugerida en el campo de entrada
+    setMessage(suggestion);
   };
 
   return (
@@ -56,7 +56,6 @@ const ChatWidget = () => {
           <div style={styles.body}>
             <p>¡Hola! ¿Cómo podemos ayudarte?</p>
             <div style={styles.suggestions}>
-              {/* Sugerencias de respuestas */}
               <button
                 onClick={() =>
                   handleSuggestedResponse("Quiero hablar con un asesor")
@@ -108,7 +107,7 @@ const styles = {
     position: "fixed",
     bottom: "20px",
     right: "20px",
-    zIndex: 999, // Mayor que el botón de subir
+    zIndex: 999,
   },
   chatButton: {
     backgroundColor: "#25D366",
@@ -134,7 +133,7 @@ const styles = {
     borderRadius: "10px",
     display: "flex",
     flexDirection: "column",
-    zIndex: 1000, // Asegúrate de que esté encima del botón de subir
+    zIndex: 1000,
   },
   header: {
     backgroundColor: "#075E54",
@@ -199,7 +198,7 @@ const styles = {
     display: "flex",
     flexDirection: "column",
     marginTop: "10px",
-    background: "rgba(255, 255, 255, 0.8)", // Fondo difuminado
+    background: "rgba(255, 255, 255, 0.8)",
     borderRadius: "5px",
     padding: "10px",
   },
