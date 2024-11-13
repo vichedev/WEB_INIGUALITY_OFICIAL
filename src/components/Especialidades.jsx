@@ -34,7 +34,7 @@ const Especialidades = () => {
           className="flex flex-col items-center mb-10"
         >
           <img
-            src="/public/iniguality.svg"
+            src="/iniguality.svg"
             alt="Logo de InigualitySoft"
             className="w-full h-auto max-w-[600px] mb-6"
           />
@@ -119,7 +119,7 @@ const Especialidades = () => {
           {/* Tres imágenes en el centro, en columna */}
           <div className="flex-1 flex flex-col space-y-4 max-w-md">
             <motion.img
-              src="/public/img/Especialidades/laptop.webp"
+              src="/img/Especialidades/laptop.webp"
               alt="Desarrollo de software en InigualitySoft"
               loading="lazy" // Lazy loading
               className="w-full h-auto rounded-lg shadow-md"
@@ -128,7 +128,7 @@ const Especialidades = () => {
               transition={{ duration: 0.8 }}
             />
             <motion.img
-              src="/public/img/Especialidades/laptop2.webp"
+              src="/img/Especialidades/laptop2.webp"
               alt="Equipo de desarrollo trabajando"
               loading="lazy" // Lazy loading
               className="w-full h-auto rounded-lg shadow-md"
@@ -137,7 +137,7 @@ const Especialidades = () => {
               transition={{ duration: 0.8 }}
             />
             <motion.img
-              src="/public/img/Especialidades/laptop3.webp"
+              src="/img/Especialidades/laptop3.webp"
               alt="Tecnologías de desarrollo"
               loading="lazy" // Lazy loading
               className="w-full h-auto rounded-lg shadow-md"

@@ -31,7 +31,7 @@ const Client = () => {
         >
           <div className="flex justify-center">
             <motion.img
-              src="/public/img/textos/nuestrosclientes.webp"
+              src="/img/textos/nuestrosclientes.webp"
               alt="Nuestros Clientes"
               loading="lazy" // Lazy loading
               className="w-full h-auto max-w-[600px] mb-6"

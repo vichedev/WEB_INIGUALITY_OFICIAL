@@ -82,8 +82,8 @@ const Hero = () => {
       {/* Imagen de fondo optimizada */}
       <div className="absolute inset-0">
         <img
-          src="/public/img/Hero/fondo.webp"
-          srcSet="/public/img/Hero/fondomobile.jpg 600w, /public/img/Hero/fondo.jpg 1200w"
+          src="/img/Hero/fondo.webp"
+          srcSet="/img/Hero/fondomobile.jpg 600w, /img/Hero/fondo.jpg 1200w"
           sizes="(max-width: 600px) 600px, 1200px"
           alt="Fondo creativo de InigualitySoft"
           className="object-cover w-full h-full"
@@ -107,8 +107,8 @@ const Hero = () => {
       {/* Imagen de fondo desplazada a la derecha */}
       <div className="absolute inset-0 hidden md:block">
         <img
-          src="/public/img/Hero/iniguality.webp"
-          srcSet="/public/img/Hero/initable.png 600w, /public/img/Hero/ini.png 1200w"
+          src="/img/Hero/iniguality.webp"
+          srcSet="/img/Hero/initable.png 600w, /img/Hero/ini.png 1200w"
           sizes="(max-width: 600px) 600px, 1200px"
           alt="Equipo de InigualitySoft trabajando"
           className="object-cover w-full h-full transform translate-x-1/4"
@@ -156,8 +156,8 @@ const Hero = () => {
         {/* Imagen del héroe que solo se muestra en móvil */}
         <div className="flex-1 md:hidden">
           <img
-            src="/public/img/Hero/hero.webp"
-            srcSet="/public/img/Hero/mobilehero.png 400w, /public/img/Hero/hero_large.webp 800w"
+            src="/img/Hero/hero.webp"
+            srcSet="/img/Hero/mobilehero.png 400w, /img/Hero/hero_large.webp 800w"
             sizes="(max-width: 600px) 400px, 800px"
             alt="Equipo de desarrollo en InigualitySoft"
             className="w-full h-auto max-w-[500px] transition-opacity duration-300"

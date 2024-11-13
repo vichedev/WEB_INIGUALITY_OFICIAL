@@ -311,7 +311,7 @@ const Productos = () => {
               </p>
               <div className="flex items-center mb-4">
                 <a
-                  href={`https://wa.me/+593991031784`}
+                  href={`https://wa.link/odbwmc`}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex items-center bg-green-500 text-white px-3 py-2 rounded hover:bg-green-600 transition duration-200"

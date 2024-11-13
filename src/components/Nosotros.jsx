@@ -9,7 +9,7 @@ const developers = [
     role: "CEO",
     description:
       "Líder visionario con más de 10 años de experiencia en la industria de Telecomunicaciones. Apasionado por la innovación y la excelencia en el desarrollo de proyectos.",
-    image: "/public/img/cartas_dev/Manuel.webp", // Ruta de la imagen del CEO
+    image: "/img/cartas_dev/Manuel.webp", // Ruta de la imagen del CEO
     social: {
       instagram: "https://www.instagram.com/rednuevaconexion.ec/?hl=es",
       github: "https://github.com/ManuelTandazo",
@@ -20,7 +20,7 @@ const developers = [
     role: "Fullstack Developer",
     description:
       "Desarrollador Fullstack con experiencia en React y Node.js. Apasionado por la creación de aplicaciones web eficientes y escalables, optimizando la experiencia del usuario y el rendimiento del servidor.",
-    image: "/public/img/cartas_dev/ariel_dev.webp", // Ruta de la imagen de Ariel
+    image: "/img/cartas_dev/ariel_dev.webp", // Ruta de la imagen de Ariel
     social: {
       instagram: "https://instagram.com",
       github: "https://github.com/Ultimategamer777",
@@ -31,7 +31,7 @@ const developers = [
     role: "Fullstack Developer",
     description:
       "Desarrollador full stack con sólida experiencia en tecnologías como Node.js y Vue.js. Especializado en la creación de soluciones escalables y eficientes",
-    image: "/public/img/cartas_dev/ken.webp", // Ruta de la imagen de Ken
+    image: "/img/cartas_dev/ken.webp", // Ruta de la imagen de Ken
     social: {
       instagram: "https://instagram.com",
       github: "https://github.com/EdgarLennon",
@@ -42,7 +42,7 @@ const developers = [
     role: "Fullstack Developer",
     description:
       "Desarrollador Frontend vuejs, react, especialista en nodejs, nest, laravel tecnologias Backend Siempre en búsqueda de nuevas tecnologías.",
-    image: "/public/img/cartas_dev/juan_dev.webp", // Ruta de la imagen de Juan
+    image: "/img/cartas_dev/juan_dev.webp", // Ruta de la imagen de Juan
     social: {
       instagram:
         "https://www.instagram.com/fernando_saa_?igsh=MTRnOHBibjJvMWxjNg==",
@@ -54,7 +54,7 @@ const developers = [
     role: "Fullstack Developer",
     description:
       "Diseñador creativo con un enfoque en la experiencia del usuario. Se especializa en interfaces atractivas y funcionales.",
-    image: "/public/img/cartas_dev/vice_dev.webp", // Ruta de la imagen de Vicente
+    image: "/img/cartas_dev/vice_dev.webp", // Ruta de la imagen de Vicente
     social: {
       instagram: "https://instagram.com",
       github: "https://github.com/vichedev",
@@ -111,7 +111,7 @@ const Nosotros = () => {
         transition={{ duration: 0.5 }} // Duración de la animación
       >
         <motion.img
-          src="/public/img/textos/nuestroequipo.webp"
+          src="/img/textos/nuestroequipo.webp"
           alt="Nuestro Equipo de Desarrolladores"
           loading="lazy" // Lazy loading
           className="w-full h-auto max-w-[600px]"

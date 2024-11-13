@@ -65,7 +65,7 @@ const Gallery = () => {
           transition={{ duration: 0.5 }} // Duración de la animación
         >
           <motion.img
-            src="/public/img/textos/galeriadeproyectos.webp"
+            src="/img/textos/galeriadeproyectos.webp"
             alt="Galería de Proyectos"
             loading="lazy" // Lazy loading
             className="w-full h-auto max-w-[600px]"
