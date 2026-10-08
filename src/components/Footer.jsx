@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { FaInstagram, FaTiktok, FaWhatsapp, FaExternalLinkAlt } from "react-icons/fa";
+import { FaTiktok, FaWhatsapp, FaExternalLinkAlt } from "react-icons/fa";
 import { AiOutlineMail } from "react-icons/ai";
 
 const nav = [
@@ -10,11 +10,6 @@ const nav = [
 ];
 
 const socials = [
-  {
-    Icon: FaInstagram,
-    label: "Instagram",
-    href: "https://www.instagram.com/rednuevaconexion.ec/?hl=es",
-  },
   {
     Icon: FaTiktok,
     label: "TikTok",

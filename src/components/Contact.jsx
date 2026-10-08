@@ -4,7 +4,6 @@ import { Helmet } from "react-helmet";
 import { AiOutlineMail } from "react-icons/ai";
 import {
   FaWhatsapp,
-  FaInstagram,
   FaTiktok,
   FaPhoneAlt,
   FaPaperPlane,
@@ -29,14 +28,6 @@ const channels = [
     cta: "Iniciar chat",
     href: "https://wa.link/3nnc8b",
     color: "from-green-400 to-emerald-600",
-  },
-  {
-    Icon: FaInstagram,
-    title: "Instagram",
-    text: "Novedades y proyectos",
-    cta: "Síguenos",
-    href: "https://www.instagram.com/rednuevaconexion.ec/?hl=es",
-    color: "from-pink-500 to-orange-400",
   },
   {
     Icon: FaTiktok,
@@ -101,7 +92,7 @@ const Contact = () => {
 
       {/* Tarjetas de canales (superpuestas al encabezado) */}
       <section className="relative z-10 px-6 -mt-28">
-        <div className="grid max-w-6xl gap-5 mx-auto sm:grid-cols-2 lg:grid-cols-4">
+        <div className="grid max-w-6xl gap-5 mx-auto sm:grid-cols-2 lg:grid-cols-3">
           {channels.map(({ Icon, title, text, cta, href, color }, i) => (
             <motion.a
               key={title}
