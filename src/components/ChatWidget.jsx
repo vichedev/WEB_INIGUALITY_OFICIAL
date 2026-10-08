@@ -9,7 +9,7 @@ const ChatWidget = ({ onToggleChat }) => {
 
   const toggleChat = () => {
     setIsChatOpen(!isChatOpen);
-    onToggleChat(!isChatOpen); // Notificamos el estado del chat
+    onToggleChat?.(!isChatOpen); // Notificamos el estado del chat
   };
 
   const handleMessageChange = (e) => {

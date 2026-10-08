@@ -1,13 +1,76 @@
-import React from "react";
-import { AiOutlineMail } from "react-icons/ai";
-import { FaWhatsapp, FaInstagram, FaTiktok } from "react-icons/fa";
+import { useState } from "react";
 import { motion } from "framer-motion";
-import { Helmet } from "react-helmet"; // Importamos Helmet
+import { Helmet } from "react-helmet";
+import { AiOutlineMail } from "react-icons/ai";
+import {
+  FaWhatsapp,
+  FaInstagram,
+  FaTiktok,
+  FaPhoneAlt,
+  FaPaperPlane,
+} from "react-icons/fa";
+import SectionTitle from "./SectionTitle";
+
+const PHONE = "593991031784";
+
+const channels = [
+  {
+    Icon: AiOutlineMail,
+    title: "Correo",
+    text: "info@inigualitysoft.com",
+    cta: "Escríbenos",
+    href: "mailto:info@inigualitysoft.com",
+    color: "from-sky-500 to-blue-600",
+  },
+  {
+    Icon: FaWhatsapp,
+    title: "WhatsApp",
+    text: "Chatea en tiempo real",
+    cta: "Iniciar chat",
+    href: "https://wa.link/3nnc8b",
+    color: "from-green-400 to-emerald-600",
+  },
+  {
+    Icon: FaInstagram,
+    title: "Instagram",
+    text: "Novedades y proyectos",
+    cta: "Síguenos",
+    href: "https://www.instagram.com/rednuevaconexion.ec/?hl=es",
+    color: "from-pink-500 to-orange-400",
+  },
+  {
+    Icon: FaTiktok,
+    title: "TikTok",
+    text: "Contenido y tecnología",
+    cta: "Descúbrenos",
+    href: "https://www.tiktok.com/@iniguality?is_from_webapp=1&sender_device=pc",
+    color: "from-slate-700 to-slate-900",
+  },
+];
+
+const inputClass =
+  "w-full px-4 py-3 transition border rounded-xl border-slate-200 bg-slate-50 focus:bg-white focus:border-primary focus:ring-4 focus:ring-sky-100 outline-none";
 
 const Contact = () => {
+  const [form, setForm] = useState({ nombre: "", servicio: "", mensaje: "" });
+
+  const onChange = (e) => setForm({ ...form, [e.target.name]: e.target.value });
+
+  // Abre WhatsApp con el mensaje ya redactado
+  const onSubmit = (e) => {
+    e.preventDefault();
+    const text = `Hola InigualitySoft, soy ${form.nombre}.${
+      form.servicio ? ` Me interesa: ${form.servicio}.` : ""
+    } ${form.mensaje}`;
+    window.open(
+      `https://wa.me/${PHONE}?text=${encodeURIComponent(text)}`,
+      "_blank",
+      "noopener,noreferrer"
+    );
+  };
+
   return (
-    <div className="relative flex flex-col items-center justify-center min-h-screen p-6 pt-32">
-      {/* SEO Dinámico con Helmet */}
+    <div className="overflow-hidden">
       <Helmet>
         <title>Contacta con Nosotros - InigualitySoft</title>
         <meta
@@ -18,147 +81,163 @@ const Contact = () => {
           name="keywords"
           content="contacto, email, whatsapp, instagram, tiktok, InigualitySoft"
         />
-        <link rel="canonical" href="https://www.inigualitysoft.com/contacto" />
+        <link rel="canonical" href="https://www.inigualitysoft.com/contactos" />
       </Helmet>
 
-      {/* Fondo con degradado */}
-      <div
-        className="absolute inset-0"
-        style={{
-          background:
-            "linear-gradient(135deg, rgba(255, 255, 255, 0.8), rgba(173, 216, 230, 0.8), rgba(240, 248, 255, 0.8))",
-          animation: "gradient 15s ease infinite",
-          backgroundSize: "400% 400%",
-          zIndex: -1, // Colocar el fondo detrás de los elementos
-        }}
-      />
-      <style>
-        {`
-          @keyframes gradient {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
-          }
-        `}
-      </style>
-
-      <motion.div
-        className="flex justify-center mb-6"
-        initial={{ opacity: 0, y: 20 }} // Estado inicial
-        whileInView={{ opacity: 1, y: 0 }} // Estado al entrar en vista
-        exit={{ opacity: 0, y: 20 }} // Estado al salir de vista
-        transition={{ duration: 0.5 }} // Duración de la animación
-      >
-        <motion.img
-          src="/public/img/textos/zonadecontactos.webp"
-          alt="Zona de Contactos"
-          className="w-full h-auto max-w-[600px]"
-        />
-      </motion.div>
-
-      {/* Subtítulo */}
-      <motion.p
-        className="text-center text-lg text-gray-600 mb-8"
-        initial={{ opacity: 0, y: 20 }} // Estado inicial
-        whileInView={{ opacity: 1, y: 0 }} // Estado al entrar en vista
-        exit={{ opacity: 0, y: 20 }} // Estado al salir de vista
-        transition={{ duration: 0.5 }} // Duración de la animación
-      >
-        ¡Contáctanos directamente a través de nuestras redes sociales!
-      </motion.p>
-
-      {/* Contenedor de tarjetas */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 w-full max-w-4xl">
-        {/* Tarjeta de correo */}
-        <div className="bg-white shadow-lg rounded-lg overflow-hidden transform transition-transform duration-300 hover:scale-105">
-          <div className="flex items-center justify-center h-40 bg-blue-300">
-            <AiOutlineMail className="text-5xl text-blue-800" />
-          </div>
-          <div className="p-4 text-center">
-            <h2 className="text-xl font-bold text-gray-800">
-              Enviar un correo
-            </h2>
-            <p className="text-gray-600 mt-2">
-              Contáctanos por email para más información.
-            </p>
-            <a
-              href="mailto:info@inigualitysoft.com"
-              className="inline-block mt-4 px-6 py-2 bg-blue-800 text-white rounded-lg hover:bg-blue-900 transition-colors"
-              target="_blank" // Abrir en nueva ventana
-              rel="noopener noreferrer" // Seguridad adicional
-              aria-label="Enviar un correo a info@inigualitysoft.com"
-            >
-              ¡Escríbenos!
-            </a>
-          </div>
+      {/* Encabezado */}
+      <section className="relative px-6 pt-40 pb-40 text-center bg-gradient-to-br from-slate-950 via-sky-950 to-slate-900">
+        <div className="absolute rounded-full pointer-events-none -top-24 -right-24 w-96 h-96 bg-cyan-500/25 blur-3xl animate-blob" />
+        <div className="absolute rounded-full pointer-events-none -bottom-24 -left-24 w-96 h-96 bg-indigo-500/25 blur-3xl animate-blob [animation-delay:-7s]" />
+        <div className="relative z-10">
+          <SectionTitle
+            light
+            eyebrow="Contacto"
+            title="Hablemos de tu"
+            highlight="proyecto"
+            subtitle="Elige el canal que prefieras. Te respondemos lo antes posible."
+          />
         </div>
+      </section>
 
-        {/* Tarjeta de WhatsApp */}
-        <div className="bg-white shadow-lg rounded-lg overflow-hidden transform transition-transform duration-300 hover:scale-105">
-          <div className="flex items-center justify-center h-40 bg-green-300">
-            <FaWhatsapp className="text-5xl text-green-800" />
-          </div>
-          <div className="p-4 text-center">
-            <h2 className="text-xl font-bold text-gray-800">WhatsApp</h2>
-            <p className="text-gray-600 mt-2">
-              Chatea con nosotros en tiempo real.
-            </p>
-            <a
-              href="https://wa.link/3nnc8b" // Cambia el número por el correcto
-              className="inline-block mt-4 px-6 py-2 bg-green-800 text-white rounded-lg hover:bg-green-900 transition-colors"
+      {/* Tarjetas de canales (superpuestas al encabezado) */}
+      <section className="relative z-10 px-6 -mt-28">
+        <div className="grid max-w-6xl gap-5 mx-auto sm:grid-cols-2 lg:grid-cols-4">
+          {channels.map(({ Icon, title, text, cta, href, color }, i) => (
+            <motion.a
+              key={title}
+              href={href}
               target="_blank"
               rel="noopener noreferrer"
-              aria-label="Iniciar chat en WhatsApp"
+              aria-label={`${cta} - ${title}`}
+              className="flex flex-col items-center p-7 text-center transition-all duration-300 bg-white shadow-xl group rounded-3xl hover:-translate-y-2 hover:shadow-2xl"
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.1 * i }}
             >
-              ¡Iniciar Chat!
-            </a>
-          </div>
+              <span
+                className={`inline-flex items-center justify-center w-16 h-16 mb-4 text-3xl text-white shadow-lg rounded-2xl bg-gradient-to-br ${color} group-hover:scale-110 transition-transform`}
+              >
+                <Icon />
+              </span>
+              <h2 className="text-xl font-bold text-slate-900">{title}</h2>
+              <p className="mt-1 mb-4 text-sm text-slate-500 break-all">
+                {text}
+              </p>
+              <span className="mt-auto text-sm font-bold text-primary group-hover:underline">
+                {cta} →
+              </span>
+            </motion.a>
+          ))}
         </div>
+      </section>
 
-        {/* Tarjeta de Instagram */}
-        <div className="bg-white shadow-lg rounded-lg overflow-hidden transform transition-transform duration-300 hover:scale-105">
-          <div className="flex items-center justify-center h-40 bg-pink-300">
-            <FaInstagram className="text-5xl text-pink-800" />
-          </div>
-          <div className="p-4 text-center">
-            <h2 className="text-xl font-bold text-gray-800">Instagram</h2>
-            <p className="text-gray-600 mt-2">
-              Síguenos para ver nuestras novedades.
+      {/* Formulario + información */}
+      <section className="px-6 py-20">
+        <div className="grid max-w-5xl gap-8 mx-auto lg:grid-cols-5">
+          <motion.div
+            className="relative p-8 overflow-hidden text-white shadow-xl lg:col-span-2 rounded-3xl bg-gradient-to-br from-slate-900 via-sky-900 to-cyan-700"
+            initial={{ opacity: 0, x: -30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+          >
+            <div className="absolute rounded-full pointer-events-none -bottom-16 -right-16 w-60 h-60 bg-cyan-400/25 blur-3xl" />
+            <h3 className="relative mb-3 text-2xl font-extrabold">
+              ¿Tienes una idea?
+            </h3>
+            <p className="relative mb-8 text-sky-100">
+              Cuéntanos qué necesitas y te ayudamos a hacerlo realidad con
+              tecnología a la medida.
             </p>
-            <a
-              href="https://www.instagram.com/rednuevaconexion.ec/?hl=es" // Cambia el perfil por el correcto
-              className="inline-block mt-4 px-6 py-2 bg-pink-800 text-white rounded-lg hover:bg-pink-900 transition-colors"
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="Seguir en Instagram"
-            >
-              ¡Síguenos!
-            </a>
-          </div>
-        </div>
+            <ul className="relative space-y-5 text-left">
+              <li className="flex items-center gap-4">
+                <span className="p-3 rounded-xl bg-white/10">
+                  <FaPhoneAlt />
+                </span>
+                <a href="tel:+593991031784" className="hover:underline">
+                  +593 99 103 1784
+                </a>
+              </li>
+              <li className="flex items-center gap-4">
+                <span className="p-3 rounded-xl bg-white/10">
+                  <AiOutlineMail />
+                </span>
+                <a
+                  href="mailto:info@inigualitysoft.com"
+                  className="break-all hover:underline"
+                >
+                  info@inigualitysoft.com
+                </a>
+              </li>
+            </ul>
+          </motion.div>
 
-        {/* Tarjeta de TikTok */}
-        <div className="bg-white shadow-lg rounded-lg overflow-hidden transform transition-transform duration-300 hover:scale-105">
-          <div className="flex items-center justify-center h-40 bg-black">
-            <FaTiktok className="text-5xl text-white" />
-          </div>
-          <div className="p-4 text-center">
-            <h2 className="text-xl font-bold text-gray-800">TikTok</h2>
-            <p className="text-gray-600 mt-2">
-              Diviértete con nuestro contenido.
-            </p>
-            <a
-              href="https://www.tiktok.com/@iniguality?is_from_webapp=1&sender_device=pc" // Cambia el usuario por el correcto
-              className="inline-block mt-4 px-6 py-2 bg-gray-800 text-white rounded-lg hover:bg-gray-900 transition-colors"
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="Descubrir contenido en TikTok"
+          <motion.form
+            onSubmit={onSubmit}
+            className="p-8 space-y-5 text-left bg-white border shadow-xl lg:col-span-3 rounded-3xl border-slate-100"
+            initial={{ opacity: 0, x: 30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+          >
+            <div>
+              <label htmlFor="nombre" className="block mb-1 text-sm font-semibold text-slate-700">
+                Tu nombre
+              </label>
+              <input
+                id="nombre"
+                name="nombre"
+                required
+                value={form.nombre}
+                onChange={onChange}
+                placeholder="Ej. María Pérez"
+                className={inputClass}
+              />
+            </div>
+            <div>
+              <label htmlFor="servicio" className="block mb-1 text-sm font-semibold text-slate-700">
+                ¿Qué te interesa?
+              </label>
+              <select
+                id="servicio"
+                name="servicio"
+                value={form.servicio}
+                onChange={onChange}
+                className={inputClass}
+              >
+                <option value="">Selecciona una opción</option>
+                <option>ISPMAX (sistema para ISP)</option>
+                <option>FactuCash (facturación)</option>
+                <option>Página web personalizada</option>
+                <option>Hotspot personalizado</option>
+                <option>Diseño gráfico / rebranding</option>
+                <option>Otro</option>
+              </select>
+            </div>
+            <div>
+              <label htmlFor="mensaje" className="block mb-1 text-sm font-semibold text-slate-700">
+                Mensaje
+              </label>
+              <textarea
+                id="mensaje"
+                name="mensaje"
+                rows="4"
+                required
+                value={form.mensaje}
+                onChange={onChange}
+                placeholder="Cuéntanos sobre tu proyecto..."
+                className={inputClass}
+              />
+            </div>
+            <button
+              type="submit"
+              className="inline-flex items-center justify-center w-full gap-2 px-8 py-4 font-bold text-white transition rounded-xl bg-gradient-to-r from-primary to-relevo hover:shadow-lg hover:shadow-cyan-500/30 hover:scale-[1.02]"
             >
-              ¡Descúbrenos!
-            </a>
-          </div>
+              <FaPaperPlane /> Enviar por WhatsApp
+            </button>
+          </motion.form>
         </div>
-      </div>
+      </section>
     </div>
   );
 };

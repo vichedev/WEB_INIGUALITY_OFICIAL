@@ -1,0 +1,11 @@
+version: '3.8'
+
+services:
+  web-iniguality:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: WEB_CLIENTE__INIGUALITYSOFT
+    ports:
+      - "8087:8080"
+    restart: unless-stopped

@@ -1,4 +1,3 @@
-import React from "react";
 import { motion } from "framer-motion";
 import {
   FaReact,
@@ -8,214 +7,103 @@ import {
   FaBolt,
   FaUniversalAccess,
 } from "react-icons/fa";
-import { Helmet } from "react-helmet"; // Importar Helmet para SEO
+import { Helmet } from "react-helmet";
+import SectionTitle from "./SectionTitle";
 
-const Especialidades = () => {
-  return (
-    <section
-      className="relative py-20 bg-white overflow-hidden"
-      id="especialidades"
-    >
-      <Helmet>
-        <title>Especialidades - InigualitySoft</title>
-        <meta
-          name="description"
-          content="Descubre nuestras especialidades en desarrollo de software, optimización web y más en InigualitySoft."
-        />
-      </Helmet>
+const items = [
+  {
+    Icon: FaReact,
+    color: "from-sky-400 to-blue-600",
+    title: "Desarrollo Frontend",
+    text: "Utilizamos React y Vue.js para crear interfaces atractivas, responsivas y eficientes.",
+  },
+  {
+    Icon: FaNodeJs,
+    color: "from-green-400 to-emerald-600",
+    title: "Desarrollo Backend",
+    text: "Soluciones robustas con Node.js, con rendimiento óptimo y seguro en el servidor.",
+  },
+  {
+    Icon: FaBolt,
+    color: "from-yellow-300 to-orange-500",
+    title: "Integraciones API",
+    text: "Integramos APIs de servicios externos de forma rápida y eficiente.",
+  },
+  {
+    Icon: FaSearch,
+    color: "from-indigo-400 to-purple-600",
+    title: "Optimización Web",
+    text: "Mejoramos el rendimiento de tu sitio: tiempos de carga rápidos y experiencia fluida.",
+  },
+  {
+    Icon: FaImage,
+    color: "from-orange-400 to-red-500",
+    title: "Optimización de Imágenes",
+    text: "Reducimos el peso de las imágenes sin perder calidad para cargar más rápido.",
+  },
+  {
+    Icon: FaUniversalAccess,
+    color: "from-rose-400 to-pink-600",
+    title: "SEO y Accesibilidad",
+    text: "Posicionamos tu sitio en buscadores y lo hacemos accesible para todos.",
+  },
+];
 
-      <div className="container mx-auto flex flex-col items-center text-center relative z-10">
-        {/* Encabezado principal */}
-        <motion.div
-          initial={{ opacity: 0, y: 50 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-          viewport={{ once: false }}
-          className="flex flex-col items-center mb-10"
-        >
-          <img
-            src="/iniguality.svg"
-            alt="Logo de InigualitySoft"
-            className="w-full h-auto max-w-[600px] mb-6"
-          />
-          <h1 className="text-2xl font-bold text-gray-900 mb-2">
-            Nuestras Especialidades
-          </h1>
-          <p className="text-lg max-w-2xl mb-6 text-gray-700">
-            Nos especializamos en el desarrollo de software a medida y en la
-            creación de páginas web atractivas y funcionales, enfocándonos en
-            brindar soluciones que se adaptan a tus necesidades.
-          </p>
-        </motion.div>
+const Especialidades = () => (
+  <section className="relative px-6 py-24 overflow-hidden bg-white" id="especialidades">
+    <Helmet>
+      <title>Especialidades - InigualitySoft</title>
+      <meta
+        name="description"
+        content="Descubre nuestras especialidades en desarrollo de software, optimización web y más en InigualitySoft."
+      />
+    </Helmet>
 
-        {/* Contenedor central con tres imágenes en columna y contenido a ambos lados */}
-        <div className="flex flex-col md:flex-row items-center justify-center gap-10 mt-10">
-          {/* Contenido del lado izquierdo */}
-          <div className="flex flex-col items-center md:items-end space-y-6">
-            {/* Carta 1 */}
-            <motion.article
-              whileHover={{
-                scale: 1.05,
-                boxShadow: "0 10px 30px rgba(0, 0, 0, 0.2)",
-              }}
-              transition={{ type: "spring", stiffness: 300 }}
-              className="bg-gray-100 shadow-sm rounded-xl p-6 max-w-xs text-left"
+    <SectionTitle
+      eyebrow="Qué hacemos"
+      title="Nuestras"
+      highlight="especialidades"
+      subtitle="Software a medida y páginas web atractivas y funcionales, pensadas para las necesidades de tu negocio."
+    />
+
+    <div className="grid items-center max-w-6xl gap-8 mx-auto lg:grid-cols-3">
+      <div className="grid gap-6 lg:col-span-2 sm:grid-cols-2">
+        {items.map(({ Icon, color, title, text }, i) => (
+          <motion.article
+            key={title}
+            className="p-7 text-left transition-all duration-300 bg-white border shadow-md group rounded-3xl border-slate-100 hover:-translate-y-2 hover:shadow-xl hover:shadow-sky-500/10"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.3 }}
+            transition={{ duration: 0.5, delay: (i % 2) * 0.1 }}
+          >
+            <span
+              className={`inline-flex items-center justify-center w-14 h-14 mb-4 text-2xl text-white shadow-lg rounded-2xl bg-gradient-to-br ${color} group-hover:scale-110 transition-transform`}
             >
-              <div className="flex items-center mb-4">
-                <FaReact className="text-blue-500 text-3xl mr-3" />
-                <h2 className="text-xl font-semibold text-gray-900">
-                  Desarrollo Frontend
-                </h2>
-              </div>
-              <p className="text-gray-600">
-                Utilizamos tecnologías como React y Vue.js para crear interfaces
-                atractivas, responsivas y eficientes.
-              </p>
-            </motion.article>
-
-            {/* Carta 2 */}
-            <motion.article
-              whileHover={{
-                scale: 1.05,
-                boxShadow: "0 10px 30px rgba(0, 0, 0, 0.2)",
-              }}
-              transition={{ type: "spring", stiffness: 300 }}
-              className="bg-gray-100 shadow-sm rounded-xl p-6 max-w-xs text-left"
-            >
-              <div className="flex items-center mb-4">
-                <FaNodeJs className="text-green-500 text-3xl mr-3" />
-                <h2 className="text-xl font-semibold text-gray-900">
-                  Desarrollo Backend
-                </h2>
-              </div>
-              <p className="text-gray-600">
-                Creamos soluciones robustas con Node.js, asegurando un
-                rendimiento óptimo y seguro en el servidor.
-              </p>
-            </motion.article>
-
-            {/* Carta 3 */}
-            <motion.article
-              whileHover={{
-                scale: 1.05,
-                boxShadow: "0 10px 30px rgba(0, 0, 0, 0.2)",
-              }}
-              transition={{ type: "spring", stiffness: 300 }}
-              className="bg-gray-100 shadow-sm rounded-xl p-6 max-w-xs text-left"
-            >
-              <div className="flex items-center mb-4">
-                <FaBolt className="text-yellow-500 text-3xl mr-3" />
-                <h2 className="text-xl font-semibold text-gray-900">
-                  Integraciones API
-                </h2>
-              </div>
-              <p className="text-gray-600">
-                Especialistas en integrar API de servicios externos,
-                garantizando una integración rápida y eficiente.
-              </p>
-            </motion.article>
-          </div>
-
-          {/* Tres imágenes en el centro, en columna */}
-          <div className="flex-1 flex flex-col space-y-4 max-w-md">
-            <motion.img
-              src="/img/Especialidades/laptop.webp"
-              alt="Desarrollo de software en InigualitySoft"
-              loading="lazy" // Lazy loading
-              className="w-full h-auto rounded-lg shadow-md"
-              initial={{ opacity: 0, scale: 0.8 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.8 }}
-            />
-            <motion.img
-              src="/img/Especialidades/laptop2.webp"
-              alt="Equipo de desarrollo trabajando"
-              loading="lazy" // Lazy loading
-              className="w-full h-auto rounded-lg shadow-md"
-              initial={{ opacity: 0, scale: 0.8 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.8 }}
-            />
-            <motion.img
-              src="/img/Especialidades/laptop3.webp"
-              alt="Tecnologías de desarrollo"
-              loading="lazy" // Lazy loading
-              className="w-full h-auto rounded-lg shadow-md"
-              initial={{ opacity: 0, scale: 0.8 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.8 }}
-            />
-          </div>
-
-          {/* Contenido del lado derecho */}
-          <div className="flex flex-col items-center md:items-start space-y-6">
-            {/* Carta 4 */}
-            <motion.article
-              whileHover={{
-                scale: 1.05,
-                boxShadow: "0 10px 30px rgba(0, 0, 0, 0.2)",
-              }}
-              transition={{ type: "spring", stiffness: 300 }}
-              className="bg-gray-100 shadow-sm rounded-xl p-6 max-w-xs text-left"
-            >
-              <div className="flex items-center mb-4">
-                <FaSearch className="text-yellow-400 text-3xl mr-3" />
-                <h2 className="text-xl font-semibold text-gray-900">
-                  Optimización Web
-                </h2>
-              </div>
-              <p className="text-gray-600">
-                Mejoramos el rendimiento de las páginas web, asegurando tiempos
-                de carga rápidos y una experiencia fluida.
-              </p>
-            </motion.article>
-
-            {/* Carta 5 */}
-            <motion.article
-              whileHover={{
-                scale: 1.05,
-                boxShadow: "0 10px 30px rgba(0, 0, 0, 0.2)",
-              }}
-              transition={{ type: "spring", stiffness: 300 }}
-              className="bg-gray-100 shadow-sm rounded-xl p-6 max-w-xs text-left"
-            >
-              <div className="flex items-center mb-4">
-                <FaImage className="text-orange-500 text-3xl mr-3" />
-                <h2 className="text-xl font-semibold text-gray-900">
-                  Optimización de Imágenes
-                </h2>
-              </div>
-              <p className="text-gray-600">
-                Reducimos el tamaño de las imágenes sin comprometer la calidad,
-                mejorando la velocidad de carga.
-              </p>
-            </motion.article>
-
-            {/* Carta 6 */}
-            <motion.article
-              whileHover={{
-                scale: 1.05,
-                boxShadow: "0 10px 30px rgba(0, 0, 0, 0.2)",
-              }}
-              transition={{ type: "spring", stiffness: 300 }}
-              className="bg-gray-100 shadow-sm rounded-xl p-6 max-w-xs text-left"
-            >
-              <div className="flex items-center mb-4">
-                <FaUniversalAccess className="text-red-500 text-3xl mr-3" />
-                <h2 className="text-xl font-semibold text-gray-900">
-                  SEO y Accesibilidad
-                </h2>
-              </div>
-              <p className="text-gray-600">
-                Optimizamos tu sitio web para motores de búsqueda y garantizamos
-                que sea accesible para todos los usuarios.
-              </p>
-            </motion.article>
-          </div>
-        </div>
+              <Icon />
+            </span>
+            <h3 className="mb-2 text-xl font-bold text-slate-900">{title}</h3>
+            <p className="text-slate-600">{text}</p>
+          </motion.article>
+        ))}
       </div>
-    </section>
-  );
-};
+
+      <motion.div
+        className="hidden lg:block"
+        initial={{ opacity: 0, scale: 0.9 }}
+        whileInView={{ opacity: 1, scale: 1 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.7 }}
+      >
+        <img
+          src="/img/Especialidades/laptop.webp"
+          alt="Desarrollo de software en InigualitySoft"
+          loading="lazy"
+          className="w-full h-auto shadow-2xl rounded-3xl"
+        />
+      </motion.div>
+    </div>
+  </section>
+);
 
 export default Especialidades;

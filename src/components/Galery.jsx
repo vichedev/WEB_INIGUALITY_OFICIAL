@@ -1,134 +1,87 @@
-import React, { useState } from "react";
-import { motion } from "framer-motion";
-// import { Helmet } from "react-helmet";
-
-// Imágenes para los proyectos
-import imgProject1 from "/public/img/Productos/Facturacion/1.webp"; // Reemplaza con la ruta real
-import imgProject2 from "/public/img/Productos/Isp/1.webp"; // Reemplaza con la ruta real
-import imgProject3 from "/public/img/Productos/ticket/1.webp"; // Reemplaza con la ruta real
-import imgProject4 from "/public/img/Productos/wbot/1.webp"; // Reemplaza con la ruta real
-import imgProject5 from "/public/img/Productos/Webs/1.webp"; // Reemplaza con la ruta real
-import imgProject6 from "/public/img/Productos/hotspot/1.webp"; // Reemplaza con la ruta real
-import imgProject7 from "/public/img/Productos/Diseño/1.webp"; // Reemplaza con la ruta real
+import { useState } from "react";
+import { AnimatePresence, motion } from "framer-motion";
+import { IoClose } from "react-icons/io5";
+import SectionTitle from "./SectionTitle";
 
 const projects = [
-  {
-    title: "Proyecto 1",
-    image: imgProject1,
-  },
-  {
-    title: "Proyecto 2",
-    image: imgProject2,
-  },
-  {
-    title: "Proyecto 3",
-    image: imgProject3,
-  },
-  {
-    title: "Proyecto 4",
-    image: imgProject4,
-  },
-  {
-    title: "Proyecto 5",
-    image: imgProject5,
-  },
-  {
-    title: "Proyecto 6",
-    image: imgProject6,
-  },
-  {
-    title: "Proyecto 7",
-    image: imgProject7,
-  },
+  { title: "FactuCash", tag: "Facturación", image: "/img/Productos/Facturacion/1.webp" },
+  { title: "ISPMAX", tag: "Sistema ISP", image: "/img/Productos/Isp/1.webp" },
+  { title: "Webs personalizadas", tag: "Desarrollo web", image: "/img/Productos/Webs/1.webp" },
+  { title: "Hotspot", tag: "Portales cautivos", image: "/img/Productos/hotspot/1.webp" },
+  { title: "Diseño gráfico", tag: "Branding", image: "/img/Productos/Diseño/1.webp" },
 ];
 
 const Gallery = () => {
-  const [selectedImage, setSelectedImage] = useState(null);
-
-  const handleImageClick = (image) => {
-    setSelectedImage(image);
-  };
-
-  const handleCloseModal = () => {
-    setSelectedImage(null);
-  };
+  const [selected, setSelected] = useState(null);
 
   return (
-    <section className="py-20 bg-gray-50 relative">
-      <div className="container mx-auto">
-        {/* Imagen de título con animación */}
-        <motion.div
-          className="flex justify-center mb-6"
-          initial={{ opacity: 0, y: 20 }} // Estado inicial
-          whileInView={{ opacity: 1, y: 0 }} // Estado al entrar en vista
-          exit={{ opacity: 0, y: 20 }} // Estado al salir de vista
-          transition={{ duration: 0.5 }} // Duración de la animación
-        >
-          <motion.img
-            src="/img/textos/galeriadeproyectos.webp"
-            alt="Galería de Proyectos"
-            loading="lazy" // Lazy loading
-            className="w-full h-auto max-w-[600px]"
-          />
-        </motion.div>
+    <section className="relative px-6 py-24 bg-slate-50">
+      <SectionTitle
+        eyebrow="Portafolio"
+        title="Galería de"
+        highlight="proyectos"
+        subtitle="Explora nuestra galería de proyectos y descubre nuestras soluciones innovadoras."
+      />
 
-        {/* Subtítulo */}
-        <motion.p
-          className="text-center text-lg text-gray-600 mb-8"
-          initial={{ opacity: 0, y: 20 }} // Estado inicial
-          whileInView={{ opacity: 1, y: 0 }} // Estado al entrar en vista
-          exit={{ opacity: 0, y: 20 }} // Estado al salir de vista
-          transition={{ duration: 0.5 }} // Duración de la animación
-        >
-          Explora nuestra galería de proyectos y descubre nuestras soluciones
-          innovadoras.
-        </motion.p>
-
-        {/* Galería de imágenes de proyectos */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
-          {projects.map((project, index) => (
-            <motion.div
-              key={index}
-              className="relative cursor-pointer rounded-lg overflow-hidden shadow-lg transition-transform duration-300 hover:shadow-xl"
-              onClick={() => handleImageClick(project.image)}
-              whileHover={{ scale: 1.05 }} // Escala al pasar el ratón
-              transition={{ duration: 0.3 }}
-              initial={{ opacity: 0, y: 20 }} // Estado inicial
-              whileInView={{ opacity: 1, y: 0 }} // Estado al entrar en vista
-              exit={{ opacity: 0, y: 20 }} // Estado al salir de vista
-              transition={{ duration: 0.5 }} // Duración de la animación
-            >
-              <img
-                src={project.image}
-                alt={project.title}
-                loading="lazy" // Lazy loading
-                className="w-full h-auto rounded-lg transition-transform duration-300 transform hover:scale-110"
-              />
-            </motion.div>
-          ))}
-        </div>
+      <div className="grid max-w-6xl gap-6 mx-auto sm:grid-cols-2 lg:grid-cols-3">
+        {projects.map((project, index) => (
+          <motion.button
+            type="button"
+            key={project.title}
+            className={`relative overflow-hidden text-left bg-white shadow-lg group rounded-3xl ${
+              index === 1 ? "lg:col-span-2" : ""
+            }`}
+            onClick={() => setSelected(project)}
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.2 }}
+            transition={{ duration: 0.5, delay: (index % 3) * 0.1 }}
+          >
+            <img
+              src={project.image}
+              alt={project.title}
+              loading="lazy"
+              className="object-cover w-full h-full transition-transform duration-500 group-hover:scale-105"
+            />
+            <div className="absolute inset-0 flex flex-col justify-end p-5 transition-opacity duration-300 opacity-0 bg-gradient-to-t from-slate-950/90 via-slate-900/30 to-transparent group-hover:opacity-100 focus-visible:opacity-100">
+              <span className="text-xs font-bold tracking-widest uppercase text-cyan-300">
+                {project.tag}
+              </span>
+              <span className="text-xl font-bold text-white">{project.title}</span>
+            </div>
+          </motion.button>
+        ))}
       </div>
 
-      {/* Modal para imagen seleccionada */}
-      {selectedImage && (
-        <motion.div
-          className="fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center z-50"
-          onClick={handleCloseModal}
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          exit={{ opacity: 0 }}
-        >
-          <motion.img
-            src={selectedImage}
-            alt="Imagen del proyecto"
-            loading="lazy" // Lazy loading
-            className="max-w-full max-h-full p-4 rounded-lg"
-            initial={{ scale: 0.9 }}
-            animate={{ scale: 1 }}
-            exit={{ scale: 0.9 }}
-          />
-        </motion.div>
-      )}
+      <AnimatePresence>
+        {selected && (
+          <motion.div
+            className="fixed inset-0 z-[60] flex items-center justify-center p-4 bg-slate-950/85 backdrop-blur-sm"
+            onClick={() => setSelected(null)}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+          >
+            <button
+              type="button"
+              aria-label="Cerrar"
+              className="absolute p-2 text-white rounded-full top-5 right-5 bg-white/10 hover:bg-white/20"
+              onClick={() => setSelected(null)}
+            >
+              <IoClose size={28} />
+            </button>
+            <motion.img
+              src={selected.image}
+              alt={selected.title}
+              className="max-w-full max-h-[90vh] rounded-2xl shadow-2xl"
+              initial={{ scale: 0.9 }}
+              animate={{ scale: 1 }}
+              exit={{ scale: 0.9 }}
+              onClick={(e) => e.stopPropagation()}
+            />
+          </motion.div>
+        )}
+      </AnimatePresence>
     </section>
   );
 };

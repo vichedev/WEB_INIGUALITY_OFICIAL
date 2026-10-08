@@ -1,6 +1,6 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { motion } from "framer-motion"; // Importar Framer Motion
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom"; // Importar useLocation
 
 // Componentes
@@ -31,6 +31,8 @@ const ScrollToTop = () => {
 //||||||||||||||||||||||||||||||||||||||||||||||
 
 function App() {
+  const [isChatOpen, setIsChatOpen] = useState(false);
+
   return (
     <Router>
       <ScrollToTop />{" "}
@@ -96,8 +98,8 @@ function App() {
           />
         </Routes>
       </div>
-      <TopUpButton />
-      <ChatWidget />
+      <TopUpButton isChatOpen={isChatOpen} />
+      <ChatWidget onToggleChat={setIsChatOpen} />
       <Footer />
     </Router>
   );

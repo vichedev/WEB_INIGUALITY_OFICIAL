@@ -1,201 +1,194 @@
-import React from "react";
-import { motion } from "framer-motion"; // Importar Framer Motion
-import { FaGithub, FaInstagram } from "react-icons/fa"; // Importar íconos
-import { Helmet } from "react-helmet"; // Importar Helmet para SEO
+import { motion } from "framer-motion";
+import { Helmet } from "react-helmet";
+import { Link } from "react-router-dom";
+import {
+  FaSeedling,
+  FaCogs,
+  FaRocket,
+  FaGlobeAmericas,
+  FaHandshake,
+  FaLightbulb,
+  FaHeart,
+  FaArrowRight,
+} from "react-icons/fa";
+import SectionTitle from "./SectionTitle";
 
-const developers = [
+const chapters = [
   {
-    name: "Ing Manuel Tandazo Mera",
-    role: "CEO",
-    description:
-      "Líder visionario con más de 10 años de experiencia en la industria de Telecomunicaciones. Apasionado por la innovación y la excelencia en el desarrollo de proyectos.",
-    image: "/img/cartas_dev/Manuel.webp", // Ruta de la imagen del CEO
-    social: {
-      instagram: "https://www.instagram.com/rednuevaconexion.ec/?hl=es",
-      github: "https://github.com/ManuelTandazo",
-    },
+    Icon: FaSeedling,
+    tag: "El origen",
+    title: "Una idea nacida en las telecomunicaciones",
+    text: "Todo comenzó trabajando de cerca con proveedores de internet. Vimos que las empresas necesitaban herramientas hechas para su realidad, no sistemas genéricos que obligaban a adaptar el negocio al software. Así nació InigualitySoft: de las ganas de resolver problemas reales con tecnología.",
   },
   {
-    name: "Ing Ariel Fajardo",
-    role: "Fullstack Developer",
-    description:
-      "Desarrollador Fullstack con experiencia en React y Node.js. Apasionado por la creación de aplicaciones web eficientes y escalables, optimizando la experiencia del usuario y el rendimiento del servidor.",
-    image: "/img/cartas_dev/ariel_dev.webp", // Ruta de la imagen de Ariel
-    social: {
-      instagram: "https://instagram.com",
-      github: "https://github.com/Ultimategamer777",
-    },
+    Icon: FaCogs,
+    tag: "El camino",
+    title: "Aprendimos construyendo",
+    text: "Cada proyecto fue una escuela. Facturación, gestión de clientes, hotspots, páginas web y marcas: fuimos sumando experiencia, afinando procesos y rodeándonos de personas apasionadas por el código, el diseño y la buena atención.",
   },
   {
-    name: "Ing Ken Aguirre",
-    role: "Fullstack Developer",
-    description:
-      "Desarrollador full stack con sólida experiencia en tecnologías como Node.js y Vue.js. Especializado en la creación de soluciones escalables y eficientes",
-    image: "/img/cartas_dev/ken.webp", // Ruta de la imagen de Ken
-    social: {
-      instagram: "https://instagram.com",
-      github: "https://github.com/EdgarLennon",
-    },
+    Icon: FaRocket,
+    tag: "Hoy",
+    title: "Un equipo, muchas disciplinas",
+    text: "Somos un equipo de desarrolladores, diseñadores y especialistas que trabaja como uno solo. Creamos ISPMAX, FactuCash y soluciones a medida que hoy usan empresas que confían en nosotros para operar cada día.",
   },
   {
-    name: "Ing Juan Saa",
-    role: "Fullstack Developer",
-    description:
-      "Desarrollador Frontend vuejs, react, especialista en nodejs, nest, laravel tecnologias Backend Siempre en búsqueda de nuevas tecnologías.",
-    image: "/img/cartas_dev/juan_dev.webp", // Ruta de la imagen de Juan
-    social: {
-      instagram:
-        "https://www.instagram.com/fernando_saa_?igsh=MTRnOHBibjJvMWxjNg==",
-      github: "https://github.com/Ferjebay",
-    },
-  },
-  {
-    name: "Ing Vicente Zamora",
-    role: "Fullstack Developer",
-    description:
-      "Diseñador creativo con un enfoque en la experiencia del usuario. Se especializa en interfaces atractivas y funcionales.",
-    image: "/img/cartas_dev/vice_dev.webp", // Ruta de la imagen de Vicente
-    social: {
-      instagram: "https://instagram.com",
-      github: "https://github.com/vichedev",
-    },
+    Icon: FaGlobeAmericas,
+    tag: "Lo que viene",
+    title: "Seguimos creciendo contigo",
+    text: "Nuestra meta es clara: llevar tecnología de primer nivel a más negocios, innovar sin descanso y acompañar a cada cliente en su crecimiento. Tu éxito es nuestra misión.",
   },
 ];
 
-const colorMap = {
-  "Ing Manuel Tandazo Mera": "text-blue-600",
-  "Ing Ariel Fajardo": "text-green-600",
-  "Ing Ken Aguirre": "text-red-600",
-  "Ing Juan Saa": "text-purple-600",
-  "Ing Vicente Zamora": "text-orange-600",
-};
+const values = [
+  {
+    Icon: FaLightbulb,
+    title: "Innovación",
+    text: "Probamos, aprendemos y mejoramos. Siempre buscamos una mejor manera de hacer las cosas.",
+  },
+  {
+    Icon: FaHandshake,
+    title: "Compromiso",
+    text: "Tu proyecto es nuestro proyecto. Cumplimos lo que prometemos y te acompañamos después de la entrega.",
+  },
+  {
+    Icon: FaHeart,
+    title: "Pasión",
+    text: "Amamos lo que hacemos y se nota en el detalle de cada pantalla y cada línea de código.",
+  },
+];
 
-const Nosotros = () => {
-  return (
-    <div className="relative px-4 py-40 md:px-16">
-      <Helmet>
-        <title>Conoce Nuestro Equipo - InigualitySoft</title>
-        <meta
-          name="description"
-          content="Conoce a nuestro equipo de desarrolladores apasionados y creativos en InigualitySoft. Descubre su experiencia y compromiso con la innovación."
-        />
-      </Helmet>
-
-      {/* Fondo con degradado */}
-      <div
-        className="absolute inset-0"
-        style={{
-          background:
-            "linear-gradient(135deg, rgba(255, 255, 255, 0.8), rgba(173, 216, 230, 0.8), rgba(240, 248, 255, 0.8))",
-          animation: "gradient 15s ease infinite",
-          backgroundSize: "400% 400%",
-          zIndex: -1, // Colocar el fondo detrás de los elementos
-        }}
+const Nosotros = () => (
+  <div className="overflow-hidden">
+    <Helmet>
+      <title>Nuestra Historia - InigualitySoft</title>
+      <meta
+        name="description"
+        content="Conoce la historia de InigualitySoft: un equipo apasionado por la tecnología que crea software a medida con innovación y compromiso."
       />
-      <style>
-        {`
-          @keyframes gradient {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
-          }
-        `}
-      </style>
+    </Helmet>
 
-      {/* Imagen de título con animación */}
-      <motion.div
-        className="flex justify-center mb-6"
-        initial={{ opacity: 0, y: 20 }} // Estado inicial
-        whileInView={{ opacity: 1, y: 0 }} // Estado al entrar en vista
-        exit={{ opacity: 0, y: 20 }} // Estado al salir de vista
-        transition={{ duration: 0.5 }} // Duración de la animación
-      >
-        <motion.img
-          src="/img/textos/nuestroequipo.webp"
-          alt="Nuestro Equipo de Desarrolladores"
-          loading="lazy" // Lazy loading
-          className="w-full h-auto max-w-[600px]"
+    {/* Encabezado */}
+    <section className="relative px-6 pt-40 pb-32 text-center bg-gradient-to-br from-slate-950 via-sky-950 to-slate-900">
+      <div className="absolute rounded-full pointer-events-none -top-24 -left-24 w-96 h-96 bg-cyan-500/25 blur-3xl animate-blob" />
+      <div className="absolute rounded-full pointer-events-none -bottom-24 -right-24 w-96 h-96 bg-indigo-500/25 blur-3xl animate-blob [animation-delay:-7s]" />
+      <div className="relative z-10 max-w-3xl mx-auto">
+        <SectionTitle
+          light
+          eyebrow="Sobre nosotros"
+          title="La historia de un equipo"
+          highlight="inigualable"
+          subtitle="Somos personas apasionadas por la tecnología que convierten ideas en software que mueve negocios."
         />
-      </motion.div>
-
-      {/* Subtítulo */}
-      <motion.p
-        className="mb-8 text-lg text-center text-gray-700"
-        initial={{ opacity: 0, y: 20 }} // Estado inicial
-        whileInView={{ opacity: 1, y: 0 }} // Estado al entrar en vista
-        exit={{ opacity: 0, y: 20 }} // Estado al salir de vista
-        transition={{ duration: 0.5 }} // Duración de la animación
+      </div>
+      <svg
+        className="absolute bottom-0 w-full h-16"
+        viewBox="0 0 1440 120"
+        preserveAspectRatio="none"
+        aria-hidden="true"
       >
-        Conoce a nuestros desarrolladores, un equipo apasionado que combina
-        talento y creatividad para llevar tus ideas a la vida. ¡Descubre lo que
-        los motiva y su compromiso con la innovación!
-      </motion.p>
+        <path
+          fill="#ffffff"
+          d="M0,64L48,69.3C96,75,192,85,288,80C384,75,480,53,576,48C672,43,768,53,864,64C960,75,1056,85,1152,80C1248,75,1344,53,1392,42.7L1440,32L1440,120L0,120Z"
+        />
+      </svg>
+    </section>
 
-      <div className="flex flex-col items-center">
-        {/* Centrar las cartas */}
-        {developers.map((developer, index) => (
-          <motion.div
-            key={index}
-            className={`flex flex-col md:flex-row items-center mb-12 justify-center w-full max-w-6xl p-6 bg-white bg-opacity-80 backdrop-blur-md rounded-lg shadow-md transform transition-transform duration-300 hover:shadow-lg hover:scale-105 ${
-              index % 2 === 0 ? "md:flex-row-reverse" : "md:flex-row"
-            }`} // Fondo blanco y ligero efecto de vidrio
-            initial={{ opacity: 0, y: 50 }} // Estado inicial
-            whileInView={{ opacity: 1, y: 0 }} // Estado al estar en vista
-            transition={{ duration: 0.6 }} // Duración de la animación
-            viewport={{ once: false }} // Permitir que se active varias veces
-            style={{ gap: "24px" }} // Añadir el gap entre la imagen y el texto
-          >
-            {/* Contenedor de la imagen */}
-            <div className="w-full md:w-[400px] h-[300px] md:flex-shrink-0 mb-4 md:mb-0">
-              <motion.img
-                src={developer.image}
-                alt={`Imagen de ${developer.name}`}
-                loading="lazy" // Lazy loading
-                className="object-cover w-full h-full transition-transform duration-300 rounded-lg shadow-sm"
-                whileHover={{ scale: 1.05 }} // Efecto hover para la imagen
-              />
-            </div>
-
-            {/* Contenedor del texto */}
-            <div className={`text-left flex flex-col`}>
-              <h2
-                className={`${
-                  colorMap[developer.name]
-                } text-2xl font-semibold transition-colors duration-300 hover:text-gray-500`}
+    {/* Línea de tiempo */}
+    <section className="relative px-6 py-20 bg-white">
+      <div className="relative max-w-5xl mx-auto">
+        <div
+          className="absolute top-0 bottom-0 hidden w-1 rounded-full left-1/2 -translate-x-1/2 md:block bg-gradient-to-b from-primary via-relevo to-indigo-400"
+          aria-hidden="true"
+        />
+        {chapters.map(({ Icon, tag, title, text }, i) => {
+          const left = i % 2 === 0;
+          return (
+            <motion.article
+              key={tag}
+              className={`relative mb-12 md:w-1/2 ${
+                left ? "md:pr-14 md:mr-auto" : "md:pl-14 md:ml-auto"
+              }`}
+              initial={{ opacity: 0, x: left ? -40 : 40 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true, amount: 0.3 }}
+              transition={{ duration: 0.6 }}
+            >
+              <span
+                className={`absolute z-10 hidden w-12 h-12 text-white rounded-full shadow-lg md:flex items-center justify-center top-6 bg-gradient-to-br from-primary to-relevo ring-4 ring-white ${
+                  left ? "-right-6" : "-left-6"
+                }`}
               >
-                {developer.name}
-              </h2>
-              <p className="text-gray-600">{developer.role}</p>
-              <p className="mt-2 text-justify text-gray-500">
-                {developer.description}
-              </p>
-              {/* Iconos de redes sociales */}
-              <div className="flex mt-4 space-x-4">
-                <a
-                  href={developer.social.github}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label={`Perfil de GitHub de ${developer.name}`} // Añadido para accesibilidad
-                  className="text-gray-600 transition-colors duration-300 hover:text-gray-800"
-                >
-                  <FaGithub size={24} />
-                </a>
-                <a
-                  href={developer.social.instagram}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label={`Perfil de Instagram de ${developer.name}`} // Añadido para accesibilidad
-                  className="text-gray-600 transition-colors duration-300 hover:text-pink-600"
-                >
-                  <FaInstagram size={24} />
-                </a>
+                <Icon />
+              </span>
+              <div className="p-7 text-left transition-shadow duration-300 bg-white border shadow-lg rounded-3xl border-slate-100 hover:shadow-2xl hover:shadow-sky-500/10">
+                <span className="inline-flex items-center gap-2 px-3 py-1 mb-3 text-xs font-bold tracking-widest uppercase rounded-full bg-sky-100 text-primary">
+                  <Icon className="md:hidden" /> {tag}
+                </span>
+                <h3 className="mb-3 text-2xl font-bold text-slate-900">
+                  {title}
+                </h3>
+                <p className="leading-relaxed text-slate-600">{text}</p>
               </div>
-            </div>
+            </motion.article>
+          );
+        })}
+      </div>
+    </section>
+
+    {/* Valores */}
+    <section className="px-6 py-20 bg-slate-50">
+      <SectionTitle
+        eyebrow="Lo que nos mueve"
+        title="Nuestros"
+        highlight="valores"
+        subtitle="Los principios que guían cada proyecto y cada relación con nuestros clientes."
+      />
+      <div className="grid max-w-5xl gap-6 mx-auto md:grid-cols-3">
+        {values.map(({ Icon, title, text }, i) => (
+          <motion.div
+            key={title}
+            className="p-8 text-center transition-all duration-300 bg-white shadow-md rounded-3xl hover:-translate-y-2 hover:shadow-xl"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: i * 0.1 }}
+          >
+            <span className="inline-flex items-center justify-center w-16 h-16 mb-5 text-2xl text-white shadow-lg rounded-2xl bg-gradient-to-br from-primary to-relevo">
+              <Icon />
+            </span>
+            <h3 className="mb-2 text-xl font-bold text-slate-900">{title}</h3>
+            <p className="text-slate-600">{text}</p>
           </motion.div>
         ))}
       </div>
-    </div>
-  );
-};
+    </section>
+
+    {/* Llamado a la acción */}
+    <section className="px-6 py-20 bg-white">
+      <motion.div
+        className="relative max-w-4xl p-10 mx-auto overflow-hidden text-center text-white shadow-2xl rounded-3xl bg-gradient-to-br from-slate-900 via-sky-900 to-cyan-700 md:p-14"
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.6 }}
+      >
+        <div className="absolute rounded-full pointer-events-none -top-20 -right-20 w-72 h-72 bg-cyan-400/25 blur-3xl" />
+        <h2 className="relative mb-4 text-3xl font-extrabold md:text-4xl">
+          ¿Listo para escribir la siguiente página con nosotros?
+        </h2>
+        <p className="relative mb-8 text-sky-100">
+          Cuéntanos tu idea y la convertimos en una solución a tu medida.
+        </p>
+        <Link
+          to="/contactos"
+          className="relative inline-flex items-center gap-2 px-8 py-4 font-bold transition rounded-full text-slate-900 bg-cyan-300 hover:bg-cyan-200 hover:scale-105"
+        >
+          Hablemos <FaArrowRight />
+        </Link>
+      </motion.div>
+    </section>
+  </div>
+);
 
 export default Nosotros;

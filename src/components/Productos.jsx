@@ -1,8 +1,9 @@
 import React, { useState } from "react";
 import { motion } from "framer-motion";
-import { FaWhatsapp } from "react-icons/fa";
+import { FaWhatsapp, FaStar, FaExternalLinkAlt } from "react-icons/fa";
 import PanZoom from "react-easy-panzoom";
 import { Helmet } from "react-helmet";
+import SectionTitle from "./SectionTitle";
 
 const categories = [
   {
@@ -40,44 +41,6 @@ const categories = [
           "Gestión integral para proveedores de servicios de internet.",
         details: "Con herramientas de soporte y gestión de clientes.",
         price: "$100",
-        contact: "info@inigualitysoft.com",
-      },
-    ],
-  },
-  {
-    name: "Sistema de Bot",
-    products: [
-      {
-        name: "WBOT",
-        images: [
-          "/img/Productos/wbot/1.webp",
-          "/img/Productos/wbot/2.webp",
-          "/img/Productos/wbot/3.webp",
-          "/img/Productos/wbot/4.webp",
-          "/img/Productos/wbot/5.webp",
-        ],
-        description: "Un bot de chat inteligente para atención al cliente.",
-        details: "Facilita la interacción y mejora la atención al cliente.",
-        price: "$80",
-        contact: "info@inigualitysoft.com",
-      },
-    ],
-  },
-  {
-    name: "Sistema de Tickets",
-    products: [
-      {
-        name: "FAST TICKET SYSTEM",
-        images: [
-          "/img/Productos/ticket/1.webp",
-          "/img/Productos/ticket/2.webp",
-          "/img/Productos/ticket/3.webp",
-          "/img/Productos/ticket/4.webp",
-          "/img/Productos/ticket/5.webp",
-        ],
-        description: "Sistema para la gestión de tickets de soporte.",
-        details: "Organiza y resuelve tickets eficientemente.",
-        price: "$120",
         contact: "info@inigualitysoft.com",
       },
     ],
@@ -171,6 +134,10 @@ const Productos = () => {
     setActiveCategory(category);
   };
 
+  const ispmax = categories
+    .flatMap((category) => category.products)
+    .find((product) => product.name === "ISPMAX");
+
   const filteredProducts = categories
     .filter(
       (category) =>
@@ -179,7 +146,7 @@ const Productos = () => {
     .flatMap((category) => category.products);
 
   return (
-    <div className="relative py-40 px-4 md:px-16">
+    <div className="relative max-w-6xl px-4 py-32 mx-auto md:px-8">
       {/* SEO Dinámico para la Página de Productos */}
       <Helmet>
         <title>
@@ -191,7 +158,7 @@ const Productos = () => {
           name="description"
           content={
             activeCategory === "Todos"
-              ? "Descubre nuestras soluciones digitales: sistemas de facturación, gestión ISP, bots, sistemas de tickets y servicios web personalizados."
+              ? "Descubre nuestras soluciones digitales: sistemas de facturación, gestión ISP y servicios web personalizados."
               : `Explora nuestros productos en la categoría de ${activeCategory}.`
           }
         />
@@ -205,38 +172,68 @@ const Productos = () => {
         />
       </Helmet>
 
-      <motion.div
-        className="flex justify-center mb-6"
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        exit={{ opacity: 0, y: 20 }}
-        transition={{ duration: 0.5 }}
-      >
-        <motion.img
-          src="/img/textos/nuestrosproductos.webp"
-          alt="Galería de Proyectos"
-          className="w-full h-auto max-w-[600px]"
-          loading="lazy" // Carga diferida de la imagen
-        />
-      </motion.div>
-      <motion.p
-        className="text-center text-lg text-gray-700 mb-8"
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        exit={{ opacity: 0, y: 20 }}
-        transition={{ duration: 0.5 }}
-      >
-        Descubre nuestras soluciones digitales, diseñadas para mejorar tu
-        negocio con herramientas innovadoras y eficientes.
-      </motion.p>
+      <SectionTitle
+        eyebrow="Catálogo"
+        title="Nuestros"
+        highlight="productos"
+        subtitle="Soluciones digitales diseñadas para mejorar tu negocio con herramientas innovadoras y eficientes."
+      />
+
+      {/* Producto estrella: ISPMAX */}
+      {ispmax && (
+        <motion.div
+          className="relative mb-12 overflow-hidden text-white shadow-2xl rounded-2xl bg-gradient-to-br from-slate-900 via-sky-900 to-cyan-700"
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+        >
+          <div className="absolute rounded-full pointer-events-none -top-24 -right-24 w-80 h-80 bg-cyan-400/20 blur-3xl" />
+          <div className="relative grid items-center gap-8 p-6 md:grid-cols-2 md:p-10">
+            <div>
+              <span className="inline-flex items-center gap-2 px-3 py-1 mb-4 text-xs font-bold tracking-widest uppercase rounded-full text-slate-900 bg-yellow-300">
+                <FaStar /> Producto estrella
+              </span>
+              <h2 className="mb-3 text-4xl font-extrabold md:text-5xl">
+                ISPMAX
+              </h2>
+              <p className="mb-2 text-lg text-sky-100">{ispmax.description}</p>
+              <p className="mb-6 text-sky-200">{ispmax.details}</p>
+              <div className="flex flex-wrap gap-3">
+                <a
+                  href="https://ispmax.ec/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 px-6 py-3 font-semibold transition rounded-full text-slate-900 bg-cyan-300 hover:bg-cyan-200 hover:scale-105"
+                >
+                  Visitar ispmax.ec <FaExternalLinkAlt size={14} />
+                </a>
+                <button
+                  type="button"
+                  onClick={() => handleOpenModal(ispmax)}
+                  className="px-6 py-3 font-semibold transition border rounded-full border-white/40 bg-white/10 hover:bg-white/20"
+                >
+                  Ver capturas
+                </button>
+              </div>
+            </div>
+            <img
+              src={ispmax.images[0]}
+              alt="Captura del sistema ISPMAX"
+              className="w-full h-auto rounded-xl shadow-xl cursor-pointer ring-1 ring-white/20"
+              loading="lazy"
+              onClick={() => handleOpenModal(ispmax)}
+            />
+          </div>
+        </motion.div>
+      )}
+
       {/* Barra de filtrado */}
       <div className="flex flex-wrap justify-center gap-4 overflow-x-auto mb-8">
         {[
           "Todos",
           "Sistema de Facturación",
           "Sistema de ISP",
-          "Sistema de Bot",
-          "Sistema de Tickets",
           "Servicios Web Personalizados",
           "Servicios HotSpot",
           "Servicios de Diseño Grafico",
@@ -244,10 +241,10 @@ const Productos = () => {
           <button
             key={category}
             onClick={() => handleFilterChange(category)}
-            className={`px-4 py-2 whitespace-nowrap rounded transition duration-200 ${
+            className={`px-5 py-2 text-sm font-semibold whitespace-nowrap rounded-full transition duration-200 ${
               activeCategory === category
-                ? "bg-blue-600 text-white"
-                : "bg-gray-200 text-gray-700 hover:bg-gray-300"
+                ? "bg-gradient-to-r from-primary to-relevo text-white shadow-md"
+                : "bg-slate-100 text-slate-600 hover:bg-sky-100 hover:text-primary"
             }`}
           >
             {category}
@@ -256,23 +253,29 @@ const Productos = () => {
       </div>
 
       {/* Productos */}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+      <div className="grid grid-cols-1 gap-6 mb-12 sm:grid-cols-2 lg:grid-cols-3">
         {filteredProducts.map((product, idx) => (
           <motion.div
             key={idx}
-            className="cursor-pointer overflow-hidden rounded-lg shadow-lg"
+            className="overflow-hidden transition-shadow duration-300 bg-white border shadow-lg cursor-pointer group rounded-3xl border-slate-100 hover:shadow-2xl hover:shadow-sky-500/10"
             onClick={() => handleOpenModal(product)}
-            whileHover={{ scale: 1.05 }}
+            whileHover={{ y: -8 }}
           >
-            <img
-              src={product.images[0]}
-              alt={product.name}
-              className="w-full h-50 object-cover rounded-lg"
-              loading="lazy" // Carga diferida de la imagen
-            />
-            <h3 className="text-center text-lg font-semibold">
-              {product.name}
-            </h3>
+            <div className="overflow-hidden">
+              <img
+                src={product.images[0]}
+                alt={product.name}
+                className="object-cover w-full transition-transform duration-500 h-52 group-hover:scale-110"
+                loading="lazy"
+              />
+            </div>
+            <div className="p-5 text-left">
+              <h3 className="text-lg font-bold text-slate-900">{product.name}</h3>
+              <p className="mt-1 text-sm text-slate-500">{product.description}</p>
+              <span className="inline-block mt-3 text-sm font-bold text-primary">
+                Ver detalle →
+              </span>
+            </div>
           </motion.div>
         ))}
       </div>

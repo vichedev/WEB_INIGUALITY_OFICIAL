@@ -1,4 +1,3 @@
-import React from "react";
 import { motion } from "framer-motion";
 import {
   FaCheckCircle,
@@ -8,124 +7,86 @@ import {
   FaLightbulb,
   FaCog,
 } from "react-icons/fa";
+import SectionTitle from "./SectionTitle";
 
-// Imágenes para las cartas
-import imgQuality from "/public/img/Kings/garantia.webp"; // Reemplaza con la ruta real de la imagen
-import imgInnovation from "/public/img/Kings/innovar.webp"; // Reemplaza con la ruta real de la imagen
-import imgSecurity from "/public/img/Kings/seguridad.webp"; // Reemplaza con la ruta real de la imagen
-import imgTeam from "/public/img/Kings/equipo.webp"; // Reemplaza con la ruta real de la imagen
-import imgSolutions from "/public/img/Kings/personalizado.webp"; // Reemplaza con la ruta real de la imagen
-import imgCustomization from "/public/img/Kings/mantenimiento.webp"; // Reemplaza con la ruta real de la imagen
+const slides = [
+  {
+    Icon: FaCheckCircle,
+    title: "Calidad Garantizada",
+    text: "Soluciones de alta calidad que cumplen los estándares más exigentes.",
+    image: "/img/Kings/garantia.webp",
+  },
+  {
+    Icon: FaStar,
+    title: "Innovación Constante",
+    text: "Siempre a la vanguardia de las últimas tecnologías para ofrecerte lo mejor.",
+    image: "/img/Kings/innovar.webp",
+  },
+  {
+    Icon: FaShieldAlt,
+    title: "Seguridad y Confianza",
+    text: "Soluciones seguras y confiables que protegen tus datos.",
+    image: "/img/Kings/seguridad.webp",
+  },
+  {
+    Icon: FaUsers,
+    title: "Equipo Profesional",
+    text: "Expertos en desarrollo, diseño y optimización trabajando para ti.",
+    image: "/img/Kings/equipo.webp",
+  },
+  {
+    Icon: FaLightbulb,
+    title: "Soluciones Personalizadas",
+    text: "Software a medida, adaptado a tus necesidades.",
+    image: "/img/Kings/personalizado.webp",
+  },
+  {
+    Icon: FaCog,
+    title: "Mantenimiento Proactivo",
+    text: "Tu software siempre actualizado y en óptimas condiciones.",
+    image: "/img/Kings/mantenimiento.webp",
+  },
+];
 
-const King = () => {
-  const slides = [
-    {
-      icon: <FaCheckCircle className="text-green-500 text-4xl" />,
-      title: "Calidad Garantizada",
-      text: "Nos comprometemos a ofrecer soluciones de alta calidad, cumpliendo con los estándares más exigentes.",
-      image: imgQuality,
-    },
-    {
-      icon: <FaStar className="text-yellow-500 text-4xl" />,
-      title: "Innovación Constante",
-      text: "Nos mantenemos a la vanguardia de las últimas tecnologías para brindarte soluciones innovadoras.",
-      image: imgInnovation,
-    },
-    {
-      icon: <FaShieldAlt className="text-blue-500 text-4xl" />,
-      title: "Seguridad y Confianza",
-      text: "Nos aseguramos de que todas nuestras soluciones sean seguras y confiables, protegiendo tus datos.",
-      image: imgSecurity,
-    },
-    {
-      icon: <FaUsers className="text-purple-500 text-4xl" />,
-      title: "Equipo Profesional",
-      text: "Contamos con un equipo de expertos en desarrollo, diseño y optimización.",
-      image: imgTeam,
-    },
-    {
-      icon: <FaLightbulb className="text-yellow-400 text-4xl" />,
-      title: "Soluciones Personalizadas",
-      text: "Adaptamos nuestras soluciones a tus necesidades, creando software a medida para ti.",
-      image: imgSolutions,
-    },
-    {
-      icon: <FaCog className="text-gray-500 text-4xl" />,
-      title: "Mantenimiento Proactivo",
-      text: "Nos aseguramos de que tu software esté siempre actualizado y en óptimas condiciones.",
-      image: imgCustomization,
-    },
-  ];
+const King = () => (
+  <section className="relative px-6 py-24 bg-gradient-to-b from-sky-50 to-white">
+    <SectionTitle
+      eyebrow="Ventajas"
+      title="¿Por qué"
+      highlight="elegirnos?"
+      subtitle="Las razones que nos hacen destacar en el desarrollo de software y tecnología."
+    />
 
-  return (
-    <section className="relative py-16 bg-gradient-to-t from-blue-200 to-blue-100 overflow-hidden">
-      {/* Encabezado con animación */}
-      <motion.div
-        className="container mx-auto text-center mb-12 relative z-10"
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        exit={{ opacity: 0, y: 20 }}
-        transition={{ duration: 0.5 }}
-      >
-        <div className="flex justify-center">
-          <motion.img
-            src="/img/textos/porqueelegirnos.webp"
-            alt="Especialidades"
-            loading="lazy" // Lazy loading
-            className="w-full h-auto max-w-[500px] mb-6"
-          />
-        </div>
-        <motion.p className="text-lg text-gray-600 max-w-lg mx-auto">
-          Descubre las razones que nos hacen destacar en el desarrollo de
-          software y tecnología.
-        </motion.p>
-      </motion.div>
-
-      {/* Grid para mostrar las cartas */}
-      <div className="px-4">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 max-w-screen-lg mx-auto">
-          {slides.map((slide, index) => (
-            <motion.div
-              key={index}
-              className="relative rounded-lg overflow-hidden shadow-lg bg-white transition-transform duration-300 hover:shadow-xl"
-              initial={{
-                opacity: 0,
-                x: index % 2 === 0 ? -50 : 50, // Si el índice es par, desplaza desde la izquierda, si es impar desde la derecha
-              }}
-              whileInView={{ opacity: 1, x: 0 }} // Vuelve al centro al entrar en vista
-              transition={{
-                duration: 0.6,
-                ease: [0.68, -0.55, 0.27, 1.55],
-                delay: index * 0.1,
-              }}
-              viewport={{ once: false, amount: 0.5 }} // Activa animaciones al hacer scroll
-            >
-              {/* Imagen de la carta */}
-              <div className="relative h-40 w-full overflow-hidden">
-                <img
-                  src={slide.image}
-                  alt={slide.title}
-                  loading="lazy" // Lazy loading
-                  className="object-cover w-full h-full transition-transform duration-500 hover:scale-105"
-                />
-              </div>
-
-              {/* Contenido de la carta */}
-              <div className="p-4 text-center">
-                <div className="mb-2 flex items-center justify-center bg-gray-100 p-2 rounded-full w-16 h-16 mx-auto">
-                  {slide.icon}
-                </div>
-                <h3 className="text-lg font-semibold text-gray-800 mb-1">
-                  {slide.title}
-                </h3>
-                <p className="text-gray-600 text-sm">{slide.text}</p>
-              </div>
-            </motion.div>
-          ))}
-        </div>
-      </div>
-    </section>
-  );
-};
+    <div className="grid max-w-6xl gap-6 mx-auto sm:grid-cols-2 lg:grid-cols-3">
+      {slides.map(({ Icon, title, text, image }, index) => (
+        <motion.article
+          key={title}
+          className="overflow-hidden transition-all duration-300 bg-white shadow-lg group rounded-3xl hover:-translate-y-2 hover:shadow-2xl hover:shadow-sky-500/10"
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.2 }}
+          transition={{ duration: 0.5, delay: (index % 3) * 0.1 }}
+        >
+          <div className="relative h-44 overflow-hidden">
+            <img
+              src={image}
+              alt={title}
+              loading="lazy"
+              className="object-cover w-full h-full transition-transform duration-500 group-hover:scale-110"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-slate-900/50 to-transparent" />
+            <span className="absolute inline-flex items-center justify-center w-12 h-12 text-xl text-white shadow-lg bottom-3 left-4 rounded-2xl bg-gradient-to-br from-primary to-relevo">
+              <Icon />
+            </span>
+          </div>
+          <div className="p-6 text-left">
+            <h3 className="mb-2 text-lg font-bold text-slate-900">{title}</h3>
+            <p className="text-sm text-slate-600">{text}</p>
+          </div>
+        </motion.article>
+      ))}
+    </div>
+  </section>
+);
 
 export default King;
